@@ -8,6 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html ng-app="revolutionShop">
 <head>
 <title>Big shope A Ecommerce Category Flat Bootstarp Resposive Website Template | Register :: w3layouts</title>
+<meta http-equiv="Content-Type" charset="utf-8">
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--theme-style-->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -20,30 +21,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script type="text/javascript" src="js/angular.min.js"></script>
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/xeditable.min.js"></script>
+	<script type="text/javascript" src="js/firebase.js"></script>
 	<script type="text/javascript" src="js/controller.js"></script>
 	<script type="text/javascript" src="js/directives.js"></script>
-
-
 </head>
-<body ng-controller="revolutionCtrl">
+<body ng-controller="RevolutionController">
 	<!--header-->
 	<header-revolution></header-revolution>
 	<!---->
 	<div class="container"> 
 			         
-		<div class="register">
-		  	  <form> 
+		<div class="register" >
+		  	  <form name="registerForm" ng-controller="RegisterController as registerCtrl" ng-submit="registerCtrl.register()">
 				 <div class="  register-top-grid">
 					<h3>PERSONAL INFORMATION</h3>
 					<div class="mation">
 						<span>First Name<label>*</label></span>
-						<input type="text"> 
+						<input type="text" name="firstNameRegister" ng-model="firstNameRegister">
 					
 						<span>Last Name<label>*</label></span>
-						<input type="text"> 
+						<input type="text" name="lastNameRegister" ng-model="lastNameRegister">
 					 
-						 <span>Email Address<label>*</label></span>
-						 <input type="text"> 
+						<span>Email Address<label>*</label></span>
+						<input type="text" name="emailRegister" ng-model="emailRegister" required>
 					</div>
 					 <div class="clearfix"> </div>
 					   <a class="news-letter" href="#">
@@ -54,19 +54,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						    <h3>LOGIN INFORMATION</h3>
 							<div class="mation">
 								<span>Password<label>*</label></span>
-								<input type="text">
+								<input type="text" name="passwordRegister" ng-model="passwordRegister" required>
 								<span>Confirm Password<label>*</label></span>
-								<input type="text">
+								<input type="text" name="rePasswordRegister" ng-model="rePasswordRegister" required>
 							</div>
 					 </div>
+				  <div class="register-but">
+					  <form>
+						  <input type="submit" value="submit">
+						  <div class="clearfix"> </div>
+					  </form>
+				  </div>
 				</form>
 				<div class="clearfix"> </div>
-				<div class="register-but">
-				   <form>
-					   <input type="submit" value="submit">
-					   <div class="clearfix"> </div>
-				   </form>
-				</div>
 		   </div>
 		   <div class="sub-cate">
 				<categories-revolution></categories-revolution>

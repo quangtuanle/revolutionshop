@@ -842,7 +842,7 @@ p.m_text {
 	display: inline-block;
 	text-transform: uppercase;
 }
-.acount-btn:hover, .login-right input[type="submit"]:hover{
+.acount-btn:hover, .login-right input[type="submit"]:hover {
 	background:#1DBAA5;
 	text-decoration:none;
 	color:#fff;

@@ -1,14 +1,11 @@
-<!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html ng-app="revolutionShop">
 <head>
     <title>Big shope A Ecommerce Category Flat Bootstarp Resposive Website Template | Login :: w3layouts</title>
+    <meta http-equiv="Content-Type" charset="utf-8">
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- my style -->
+    <link href="css/mycss.css" rel="stylesheet" type="text/css" />
     <!--theme-style-->
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!--//theme-style-->
@@ -20,43 +17,59 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/xeditable.min.js"></script>
+    <script type="text/javascript" src="js/firebase.js"></script>
     <script type="text/javascript" src="js/controller.js"></script>
     <script type="text/javascript" src="js/directives.js"></script>
 </head>
-<body ng-controller="loginCtrl">
+<body ng-controller="RevolutionController">
 <!--header-->
 <header-revolution></header-revolution>
 <!---->
 <div class="container">
 
-    <!-- CONTENT -->
-    <div class="account_grid">
-        <div class=" login-right">
-            <!-- Them chuc nang sua / them - avatar load hinh tu component -->
-            <h3>QUANG TUAN LE</h3>
-            <p>Student at University of Science</p>
-            <form>
-                <div>
-                    <span>Email Address<label>*</label></span>
-                    <input type="text">
-                </div>
-                <div>
-                    <span>Password<label>*</label></span>
-                    <input type="text">
-                </div>
-                <a class="forgot" href="#">Forgot Your Password?</a>
-                <input type="submit" value="Login">
-            </form>
+    <div class="profile_grid" ng-controller="ProfileController as profileCtrl">
+        <div id="profile-resume">
+            <div class="profile-avatar">
+                <img class="avatar" width="240px" height="240px"
+                     src="images/avatar.jpg" />
+            </div>
+            <div class="profile-info">
+                <ul class="profile-info-content">
+                    <h3 class="restyle" editable-text="data[0].name"><b>{{ data[0].name }}</b></h3>
+                    <h4 class="restyle" editable-text="data[0].job">{{ data[0].job }}</h4>
+                    <p class="restyle" editable-text="data[0].address">{{ data[0].address }}</p>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td class="alignTable" >Phone</td>
+                            <td><span editable-text="data[0].phone">{{ data[0].phone }}</span></td>
+                        </tr>
+                        <tr>
+                            <td class="alignTable" >Email</td>
+                            <td><span editable-text="data[0].email">{{ data[0].email }}</span></td>
+                        </tr>
+                        <tr>
+                            <td class="alignTable" >Education</td>
+                            <td><span editable-text="data[0].education">{{ data[0].education }}</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </ul>
+            </div>
         </div>
-        <div class=" login-left">
-            <h3>NEW CUSTOMERS</h3>
-            <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
-            <a class="acount-btn" href="register.html">Create an Account</a>
-        </div>
-        <div class="clearfix"> </div>
     </div>
-    <!-- END CONTENT -->
-    <categories-revolution></categories-revolution>
+    <div class="sub-cate">
+        <categories-revolution></categories-revolution>
+        <div class=" chain-grid menu-chain">
+            <a href="single.html"><img class="img-responsive chain" src="images/wat.jpg" alt=" " /></a>
+            <div class="grid-chain-bottom chain-watch">
+                <span class="actual dolor-left-grid">300$</span>
+                <span class="reducedfrom">500$</span>
+                <h6>Lorem ipsum dolor</h6>
+            </div>
+        </div>
+        <a class="view-all all-product" href="product.html">VIEW ALL PRODUCTS<span> </span></a>
+    </div>
     <div class="clearfix"> </div>
 </div>
 <!---->

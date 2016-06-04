@@ -17,30 +17,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--fonts-->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 <!--//fonts-->
-	<script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
 	<script type="text/javascript" src="js/angular.min.js"></script>
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/xeditable.min.js"></script>
 	<script type="text/javascript" src="js/controller.js"></script>
 	<script type="text/javascript" src="js/directives.js"></script>
 </head>
-<body>
+<body ng-controller="revolutionCtrl">
 	<!--header-->
 	<header-revolution></header-revolution>
 	<!---->
 	<div class="container">
-		<div class="account_grid">
+		
+      	   <div class="account_grid">
 			   <div class=" login-right">
 			  	<h3>REGISTERED CUSTOMERS</h3>
 				<p>If you have an account with us, please log in.</p>
-				<form name="loginForm" ng-controller="LoginController as logCtrl" ng-submit="logCtrl.login()">
+				<form>
 				  <div>
 					<span>Email Address<label>*</label></span>
-					<input type="text" ng-model="emailAccount" required>
+					<input type="text"> 
 				  </div>
 				  <div>
 					<span>Password<label>*</label></span>
-					<input type="password" ng-model="passwordAccount">
+					<input type="text"> 
 				  </div>
 				  <a class="forgot" href="#">Forgot Your Password?</a>
 				  <input type="submit" value="Login">
@@ -53,9 +53,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			   </div>
 			   <div class="clearfix"> </div>
 			 </div>
-		<categories-revolution></categories-revolution>
-		<div class="clearfix"> </div>
-	</div>
+			 <div class="sub-cate">
+				<categories-revolution></categories-revolution>
+					<div class=" chain-grid menu-chain">
+	   		     		<a href="single.html"><img class="img-responsive chain" src="images/wat.jpg" alt=" " /></a>	   		     		
+	   		     		<div class="grid-chain-bottom chain-watch">
+		   		     		<span class="actual dolor-left-grid">300$</span>
+		   		     		<span class="reducedfrom">500$</span>  
+		   		     		<h6>Lorem ipsum dolor</h6>  		     			   		     										
+	   		     		</div>
+	   		     	</div>
+	   		     	 <a class="view-all all-product" href="product.html">VIEW ALL PRODUCTS<span> </span></a> 	
+			</div>
+			  <div class="clearfix"> </div>
+      	 </div>
 	<!---->
 	<footer-revolution></footer-revolution>
 </body>

@@ -23,30 +23,34 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script type="text/javascript" src="js/xeditable.min.js"></script>
 	<script type="text/javascript" src="js/controller.js"></script>
 	<script type="text/javascript" src="js/directives.js"></script>
-    <script src="js/jquery.etalage.min.js"></script>
-    <script>
-        jQuery(document).ready(function($){
 
-            $('#etalage').etalage({
-                thumb_image_width: 300,
-                thumb_image_height: 400,
-                source_image_width: 900,
-                source_image_height: 1200,
-                show_hint: true,
-                click_callback: function(image_anchor, instance_id){
-                    alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
-                }
-            });
+<script src="js/jquery.etalage.min.js"></script>
+<script>
+			jQuery(document).ready(function($){
 
-        });
-    </script>
+				$('#etalage').etalage({
+					thumb_image_width: 300,
+					thumb_image_height: 400,
+					source_image_width: 900,
+					source_image_height: 1200,
+					show_hint: true,
+					click_callback: function(image_anchor, instance_id){
+						alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
+					}
+				});
+
+			});
+		</script>
+
 </head>
-<body ng-controller="singleCtrl">
+<body ng-controller="revolutionCtrl">
 	<!--header-->
 	<header-revolution></header-revolution>
 	<!---->
-	<div class="container">
-		<div class=" single_top">
+	
+	 <div class="container"> 
+	 	
+	 	<div class=" single_top">
 	      <div class="single_grid">
 				<div class="grid images_3_of_2">
 						<ul id="etalage">
@@ -137,10 +141,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				     	<p class="m_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
 				     </div>	
           	   </div>
-		<!---->
-		<categories-revolution></categories-revolution>
-		<div class="clearfix"> </div>
-	</div>
+          	   
+          	   <!---->
+<div class="sub-cate">
+				<categories-revolution></categories-revolution>
+					<div class=" chain-grid menu-chain">
+	   		     		<a href="single.html"><img class="img-responsive chain" src="images/wat.jpg" alt=" " /></a>	   		     		
+	   		     		<div class="grid-chain-bottom chain-watch">
+		   		     		<span class="actual dolor-left-grid">300$</span>
+		   		     		<span class="reducedfrom">500$</span>  
+		   		     		<h6>Lorem ipsum dolor</h6>  		     			   		     										
+	   		     		</div>
+	   		     	</div>
+	   		     	 <a class="view-all all-product" href="product.html">VIEW ALL PRODUCTS<span> </span></a> 	
+			</div>
+<div class="clearfix"> </div>			
+		</div>
 	<!---->
 	<footer-revolution></footer-revolution>
 </body>

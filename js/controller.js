@@ -48,6 +48,29 @@
             }
         }
     ]);
+    app.component('imagepicker', {
+        templateUrl:"template/imagepicker.html",
+        controller: ['$scope', function($scope) {
+            filepicker.setKey("AwhE62zXS3ittGq7Xovynz");
+            $scope.browserImage = function () {
+                filepicker.pick(
+                    {
+                        minitype:'image/*',
+                        services:['COMPUTER','WEBCAM','FACEBOOK','IMAGE_SEARCH', 'URL'],
+                        conversions:['crop','rotate', 'filter']
+                    },
+                    function (img) {
+                        var url = img.url;
+                        console.log(url);
+                        $scope.urlImg = url;
+
+                    }
+                );
+
+            }
+
+        }
+    ]});
 
     app.controller('ProfileController', ["$scope",
         function($scope){
@@ -60,7 +83,7 @@
 
                 refUserActive.on("value", function(snapshot) {
                     $scope.dataUser = snapshot.val();
-
+                    console.log($scope.dataUser.first_name);
                     // Might need to use $digest to update $scope.
                     $scope.$digest();
                 }, function (errorObject) {

@@ -53,23 +53,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 		<!-- grids_of_4 -->
 		<div class="grid-product" ng-controller="ProductController as productCtrl">
-		  <div class="  product-grid">
-			  <ul><li style="float:left" ng-repeat="hat in hats">
-			<div class="content_box"><a href="single.html">
-			   	<div class="left-grid-view grid-view-left">
-			   	   	 <img ng-src="images/hat/N1_1.png" class="img-responsive watch-right" alt=""/>
-				   	   	<div class="mask">
-	                        <div class="info">Quick View</div>
-			            </div>
-				   	  </a>
-				</div>
+		  <div class="product-grid" ng-repeat="hat in hats">
+			  <ul >
+
+			  <li style="float:left; margin: 10px">
+				<div class="content_box"><a href="single.html"></a>
+					<div class="left-grid-view grid-view-left">
+						 <img ng-src="images/hat/N1_1.png" class="img-responsive watch-right" alt=""/>
+							<div class="mask">
+								<div class="info">Quick View</div>
+							</div>
+
+					</div>
 				    <h4><a href="#">{{hat.name}}</a></h4>
-				     <p>{{hat.info[0]}}</p>
+				     <p>{{hat.info[0] | limitTo:40}}</p>
 				     Rs. 499
 			   	</div>
 			</li>
 			</ul>
-              </div>
+		  </div>
 			<div class="clearfix"> </div>
 		</div>
 	</div>

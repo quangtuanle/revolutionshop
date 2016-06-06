@@ -18,15 +18,15 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/xeditable.min.js"></script>
     <script type="text/javascript" src="js/firebase.js"></script>
+    <script type="text/javascript" src="js/angularfire.min.js"></script>
     <script type="text/javascript" src="js/controller.js"></script>
     <script type="text/javascript" src="js/directives.js"></script>
 </head>
-<body ng-controller="RevolutionController">
+<body ng-controller="AccountController">
 <!--header-->
 <header-revolution></header-revolution>
 <!---->
 <div class="container">
-
     <div class="profile_grid" ng-controller="ProfileController as profileCtrl">
         <div id="profile-resume">
             <div class="profile-avatar">
@@ -35,22 +35,21 @@
             </div>
             <div class="profile-info">
                 <ul class="profile-info-content">
-                    <h3 class="restyle" editable-text="data[0].name"><b>{{ data[0].name }}</b></h3>
-                    <h4 class="restyle" editable-text="data[0].job">{{ data[0].job }}</h4>
-                    <p class="restyle" editable-text="data[0].address">{{ data[0].address }}</p>
+                    <h3 class="restyle" editable-text="dataUser.first_name"><b>{{ dataUser.first_name }}</b></h3>
+                    <h3 class="restyle" editable-text="dataUser.last_name"><b>{{ dataUser.last_name }}</b></h3>
                     <table>
                         <tbody>
                         <tr>
-                            <td class="alignTable" >Phone</td>
-                            <td><span editable-text="data[0].phone">{{ data[0].phone }}</span></td>
+                            <td class="alignTable">Phone</td>
+                            <td><span editable-text="dataUser.phone">{{ dataUser.phone }}</span></td>
                         </tr>
                         <tr>
                             <td class="alignTable" >Email</td>
-                            <td><span editable-text="data[0].email">{{ data[0].email }}</span></td>
+                            <td><span editable-text="dataUser.email">{{ dataUser.email }}</span></td>
                         </tr>
                         <tr>
                             <td class="alignTable" >Education</td>
-                            <td><span editable-text="data[0].education">{{ data[0].education }}</span></td>
+                            <td><span editable-text="dataUser.address">{{ dataUser.address }}</span></td>
                         </tr>
                         </tbody>
                     </table>

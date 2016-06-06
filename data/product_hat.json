@@ -23,9 +23,9 @@
     "date": "2016-06-09",
     "cost": 100,
     "image": [
-      "images/N1_1",
-      "images/N1_2",
-      "images/N1_3"
+      "images/hat/N1_1.png",
+      "images/hat/N1_2.png",
+      "images/hat/N1_3.png"
     ]
   },
 
@@ -53,10 +53,10 @@
     "date": "2016-02-09",
     "cost": 75,
     "image": [
-      "images/N2_1",
-      "images/N2_2",
-      "images/N2_3",
-      "images/N2_4"
+      "images/hat/N2_1.jpg",
+      "images/hat/N2_2.jpg",
+      "images/hat/N2_3.jpg",
+      "images/hat/N2_4.jpg"
     ]
   },
 
@@ -89,9 +89,9 @@
     "date": "2016-06-10",
     "cost": 20,
     "image": [
-      "images/N3_1",
-      "images/N3_2",
-      "images/N3_3"
+      "images/hat/N3_1.jpg",
+      "images/hat/N3_2.jpg",
+      "images/hat/N3_3.jpg"
     ]
   },
 
@@ -118,9 +118,9 @@
     "date": "2016-06-07",
     "cost": 30,
     "image": [
-      "images/N4_1",
-      "images/N4_2",
-      "images/N4_3"
+      "images/hat/N4_1.jpg",
+      "images/hat/N4_2.jpg",
+      "images/hat/N4_3.jpg"
     ]
   },
 
@@ -148,9 +148,9 @@
     "date": "2016-06-04",
     "cost": 40,
     "image": [
-      "images/N5_1",
-      "images/N5_2",
-      "images/N5_3"
+      "images/hat/N5_1.jpg",
+      "images/hat/N5_2.jpg",
+      "images/hat/N5_3.jpg"
     ]
   },
 
@@ -177,9 +177,9 @@
     "date": "2016-06-03",
     "cost": 50,
     "image": [
-      "images/N6_1",
-      "images/N6_2",
-      "images/N6_3"
+      "images/hat/N6_1.jpg",
+      "images/hat/N6_2.jpg",
+      "images/hat/N6_3.jpg"
     ]
   },
 
@@ -208,9 +208,9 @@
     "date": "2016-03-03",
     "cost": 80,
     "image": [
-      "images/N7_1",
-      "images/N7_2",
-      "images/N7_3"
+      "images/hat/N7_1.jpg",
+      "images/hat/N7_2.jpg",
+      "images/hat/N7_3.jpg"
     ]
   },
 
@@ -239,9 +239,9 @@
     "date": "2016-11-10",
     "cost": 55,
     "image": [
-      "images/N8_1",
-      "images/N8_2",
-      "images/N8_3"
+      "images/hat/N8_1.jpg",
+      "images/hat/N8_2.jpg",
+      "images/hat/N8_3.jpg"
     ]
   },
 
@@ -270,9 +270,9 @@
     "date": "2016-12-12",
     "cost": 90,
     "image": [
-      "images/N9_1",
-      "images/N9_2",
-      "images/N9_3"
+      "images/hat/N9_1.jpg",
+      "images/hat/N9_2.jpg",
+      "images/hat/N9_3.jpg"
     ]
   }
 ]

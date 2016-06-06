@@ -21,9 +21,9 @@
     "date": "2016-06-09",
     "cost": 100,
     "image": [
-      "images/GL1_1",
-      "images/GL1_2",
-      "images/GL1_3"
+      "images/GL1_1.png",
+      "images/GL1_2.png",
+      "images/GL1_3.png"
     ]
   },
 
@@ -54,9 +54,9 @@
     "date": "2016-06-10",
     "cost": 120,
     "image": [
-      "images/GL2_1",
-      "images/GL2_2",
-      "images/GL2_3"
+      "images/GL2_1.jpg",
+      "images/GL2_2.jpg",
+      "images/GL2_3.jpg"
     ]
   },
 
@@ -91,9 +91,9 @@
     "date": "2016-06-11",
     "cost": 110,
     "image": [
-      "images/GL3_1",
-      "images/GL3_2",
-      "images/GL3_3"
+      "images/GL3_1.png",
+      "images/GL3_2.png",
+      "images/GL3_3.png"
     ]
   },
 
@@ -120,9 +120,9 @@
     "date": "2016-06-12",
     "cost": 115,
     "image": [
-      "images/GL4_1",
-      "images/GL4_2",
-      "images/GL4_3"
+      "images/GL4_1.png",
+      "images/GL4_2.png",
+      "images/GL4_3.png"
     ]
   },
 
@@ -150,9 +150,9 @@
     "date": "2016-07-02",
     "cost": 125,
     "image": [
-      "images/GL5_1",
-      "images/GL5_2",
-      "images/GL5_3"
+      "images/GL5_1.png",
+      "images/GL5_2.png",
+      "images/GL5_3.png"
     ]
   },
 
@@ -182,9 +182,9 @@
     "date": "2016-07-03",
     "cost": 135,
     "image": [
-      "images/GL6_1",
-      "images/GL6_2",
-      "images/GL6_3"
+      "images/GL6_1.jpg",
+      "images/GL6_2.jpg",
+      "images/GL6_3.jpg"
     ]
   },
 
@@ -216,9 +216,9 @@
     "date": "2016-05-09",
     "cost": 90,
     "image": [
-      "images/GL7_1",
-      "images/GL7_2",
-      "images/GL7_3"
+      "images/GL7_1.jpg",
+      "images/GL7_2.jpg",
+      "images/GL7_3.jpg"
     ]
   },
 
@@ -245,9 +245,9 @@
     "date": "2016-01-09",
     "cost": 200,
     "image": [
-      "images/GL8_1",
-      "images/GL8_2",
-      "images/GL8_3"
+      "images/GL8_1.png",
+      "images/GL8_2.png",
+      "images/GL8_3.png"
     ]
   },
 
@@ -276,9 +276,9 @@
     "date": "2016-10-09",
     "cost": 190,
     "image": [
-      "images/GL9_1",
-      "images/GL9_2",
-      "images/GL9_3"
+      "images/GL9_1.png",
+      "images/GL9_2.png",
+      "images/GL9_3.png"
     ]
   }
 ]

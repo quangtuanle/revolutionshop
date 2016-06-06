@@ -21,6 +21,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script type="text/javascript" src="js/angular.min.js"></script>
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/xeditable.min.js"></script>
+	<script type="text/javascript" src="js/firebase.js"></script>
+	<script type="text/javascript" src="js/angularfire.min.js"></script>
 	<script type="text/javascript" src="js/controller.js"></script>
 	<script type="text/javascript" src="js/directives.js"></script>
 
@@ -50,133 +52,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 		</div>
 		<!-- grids_of_4 -->
-		<div class="grid-product">
+		<div class="grid-product" ng-controller="ProductController as productCtrl">
 		  <div class="  product-grid">
+			  <ul><li style="float:left" ng-repeat="hat in hats">
 			<div class="content_box"><a href="single.html">
 			   	<div class="left-grid-view grid-view-left">
-			   	   	 <img src="images/pic13.jpg" class="img-responsive watch-right" alt=""/>
+			   	   	 <img ng-src="images/hat/N1_1.png" class="img-responsive watch-right" alt=""/>
 				   	   	<div class="mask">
 	                        <div class="info">Quick View</div>
 			            </div>
 				   	  </a>
 				</div>
-				    <h4><a href="#"> Duis autem</a></h4>
-				     <p>It is a long established fact that a reader</p>
+				    <h4><a href="#">{{hat.name}}</a></h4>
+				     <p>{{hat.info[0]}}</p>
 				     Rs. 499
 			   	</div>
+			</li>
+			</ul>
               </div>
-			 <div class="  product-grid">
-			<div class="content_box"><a href="single.html">
-			   	<div class="left-grid-view grid-view-left">
-			   	   	 <img src="images/pic2.jpg" class="img-responsive watch-right" alt=""/>
-				   	   	<div class="mask">
-	                        <div class="info">Quick View</div>
-			            </div>
-				   	  </a>
-				   </div>
-				    <h4><a href="#"> Duis autem</a></h4>
-				     <p>It is a long established fact that a reader</p>
-				     Rs. 499
-			   	</div>
-                 </div>
-			 <div class="  product-grid">
-			<div class="content_box"><a href="single.html">
-			   	<div class="left-grid-view grid-view-left">
-			   	   	 <img src="images/pic3.jpg" class="img-responsive watch-right" alt=""/>
-				   	   	<div class="mask">
-	                        <div class="info">Quick View</div>
-			            </div>
-				   	  </a>
-				   </div>
-				    <h4><a href="#"> Duis autem</a></h4>
-				     <p>It is a long established fact that a reader</p>
-				     Rs. 499
-			   	</div>
-                 </div>
-		  <div class="  product-grid">
-			<div class="content_box"><a href="single.html">
-			   	<div class="left-grid-view grid-view-left">
-			   	   	 <img src="images/pic4.jpg" class="img-responsive watch-right" alt=""/>
-				   	   	<div class="mask">
-	                        <div class="info">Quick View</div>
-			            </div>
-				   	  </a>
-				   </div>
-				    <h4><a href="#"> Duis autem</a></h4>
-				     <p>It is a long established fact that a reader</p>
-				     Rs. 499
-			   	</div>
-              </div>
-			 <div class="  product-grid">
-			<div class="content_box"><a href="single.html">
-			   	<div class="left-grid-view grid-view-left">
-			   	   	 <img src="images/pic6.jpg" class="img-responsive watch-right" alt=""/>
-				   	   	<div class="mask">
-	                        <div class="info">Quick View</div>
-			            </div>
-				   	  </a>
-				   </div>
-				    <h4><a href="#"> Duis autem</a></h4>
-				     <p>It is a long established fact that a reader</p>
-				     Rs. 499
-			   	</div>
-                 </div>
-			 <div class="  product-grid">
-			<div class="content_box"><a href="single.html">
-			   	<div class="left-grid-view grid-view-left">
-			   	   	 <img src="images/pic7.jpg" class="img-responsive watch-right" alt=""/>
-				   	   	<div class="mask">
-	                        <div class="info">Quick View</div>
-			            </div>
-				   	  </a>
-				   </div>
-				    <h4><a href="#"> Duis autem</a></h4>
-				     <p>It is a long established fact that a reader</p>
-				     Rs. 499
-			   	</div>
-                 </div>
-		  <div class="  product-grid">
-			<div class="content_box"><a href="single.html">
-			   	<div class="left-grid-view grid-view-left">
-			   	   	 <img src="images/pic8.jpg" class="img-responsive watch-right" alt=""/>
-				   	   	<div class="mask">
-	                        <div class="info">Quick View</div>
-			            </div>
-				   	  </a>
-				   </div>
-				    <h4><a href="#"> Duis autem</a></h4>
-				     <p>It is a long established fact that a reader</p>
-				     Rs. 499
-			   	</div>
-              </div>
-			 <div class="  product-grid">
-			<div class="content_box"><a href="single.html">
-			   	<div class="left-grid-view grid-view-left">
-			   	   	 <img src="images/pic11.jpg" class="img-responsive watch-right" alt=""/>
-				   	   	<div class="mask">
-	                        <div class="info">Quick View</div>
-			            </div>
-				   	  </a>
-				   </div>
-				    <h4><a href="#"> Duis autem</a></h4>
-				     <p>It is a long established fact that a reader</p>
-				     Rs. 499
-			   	</div>
-                 </div>
-			 <div class=" product-grid">
-			<div class="content_box"><a href="single.html">
-			   	<div class="left-grid-view grid-view-left">
-			   	   	 <img src="images/pic12.jpg" class="img-responsive watch-right" alt=""/>
-				   	   	<div class="mask">
-	                        <div class="info">Quick View</div>
-			            </div>
-				   	  </a>
-				   </div>
-				    <h4><a href="#"> Duis autem</a></h4>
-				     <p>It is a long established fact that a reader</p>
-				     Rs. 499
-			   	</div>
-                 </div>
 			<div class="clearfix"> </div>
 		</div>
 	</div>

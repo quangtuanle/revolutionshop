@@ -16,21 +16,19 @@
     <!-- grids_of_4 -->
     <div class="grid-product">
         <div class="product-grid" ng-repeat="product in products">
-            <ul>
-                <li style="float:left; margin: 10px">
-                    <div class="content_box"><a href="single.html"></a>
-                        <div class="left-grid-view grid-view-left">
-                            <img ng-src="{{product.image[0]}}" class="img-responsive watch-right" alt=""/>
+
+                    <div style="margin: 10px" class="content_box"><a href="single.html"></a>
+                        <div style="height:290px"  class="left-grid-view grid-view-left" >
+                            <img ng-src="{{product.image[0]}}"  class="img-responsive watch-right" alt="" />
                             <div class="mask">
                                 <div class="info">Quick View</div>
                             </div>
                         </div>
-                        <h4><a href="#!/product/{{product.type}}/{{product.id}}">{{product.name}}</a></h4>
-                        <p>{{hat.info[0] | limitTo:40}}</p>
-                        Rs. 499
+                        <h4><a href="#!/product/{{product.type}}/{{product.id}}">{{product.name|limitTo:25}} </a></h4>
+                        <p>{{product.info[0] | limitTo:40}}</p>
+                        Q. {{product.quantity}}
                     </div>
-                </li>
-            </ul>
+
         </div>
         <div class="clearfix"> </div>
     </div>

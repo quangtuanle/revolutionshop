@@ -20,10 +20,11 @@
     ],
     "date": "2016-06-09",
     "cost": 800,
+    "type": "sportshoes",
     "image": [
-      "images/GTT1_1",
-      "images/GTT1_2",
-      "images/GTT1_3"
+      "images/sportshoes/GTT1_1.jpg",
+      "images/sportshoes/GTT1_2.jpg",
+      "images/sportshoes/GTT1_3.jpg"
     ]
   },
 
@@ -52,10 +53,11 @@
     ],
     "date": "2016-06-10",
     "cost": 900,
+    "type": "sportshoes",
     "image": [
-      "images/GTT2_1",
-      "images/GTT2_2",
-      "images/GTT2_3"
+      "images/sportshoes/GTT2_1.jpg",
+      "images/sportshoes/GTT2_2.jpg",
+      "images/sportshoes/GTT2_3.jpg"
     ]
   },
 
@@ -88,11 +90,12 @@
     ],
     "date": "2016-06-11",
     "cost": 600,
+    "type": "sportshoes",
     "image": [
-      "images/GTT3_1",
-      "images/GTT3_2",
-      "images/GTT3_3",
-      "images/GTT3_4"
+      "images/sportshoes/GTT3_1.jpg",
+      "images/sportshoes/GTT3_2.jpg",
+      "images/sportshoes/GTT3_3.jpg",
+      "images/sportshoes/GTT3_4.jpg"
     ]
   },
 
@@ -118,10 +121,11 @@
     ],
     "date": "2016-06-12",
     "cost": 500,
+    "type": "sportshoes",
     "image": [
-      "images/GTT4_1",
-      "images/GTT4_2",
-      "images/GTT4_3"
+      "images/sportshoes/GTT4_1.jpg",
+      "images/sportshoes/GTT4_2.jpg",
+      "images/sportshoes/GTT4_3.jpg"
     ]
   },
 
@@ -148,10 +152,11 @@
     ],
     "date": "2016-07-02",
     "cost": 700,
+    "type": "sportshoes",
     "image": [
-      "images/GTT5_1",
-      "images/GTT5_2",
-      "images/GTT5_3"
+      "images/sportshoes/GTT5_1.jpg",
+      "images/sportshoes/GTT5_2.jpg",
+      "images/sportshoes/GTT5_3.jpg"
     ]
   },
 
@@ -180,10 +185,11 @@
     ],
     "date": "2016-07-03",
     "cost": 990,
+    "type": "sportshoes",
     "image": [
-      "images/GTT6_1",
-      "images/GTT6_2",
-      "images/GTT6_3"
+      "images/sportshoes/GTT6_1.jpg",
+      "images/sportshoes/GTT6_2.jpg",
+      "images/sportshoes/GTT6_3.jpg"
     ]
   },
 
@@ -214,10 +220,11 @@
     ],
     "date": "2016-05-09",
     "cost": 2000,
+    "type": "sportshoes",
     "image": [
-      "images/GTT7_1",
-      "images/GTT7_2",
-      "images/GTT7_3"
+      "images/sportshoes/GTT7_1.jpg",
+      "images/sportshoes/GTT7_2.jpg",
+      "images/sportshoes/GTT7_3.jpg"
     ]
   },
 
@@ -243,10 +250,11 @@
     ],
     "date": "2016-01-09",
     "cost": 5000,
+    "type": "sportshoes",
     "image": [
-      "images/GTT8_1",
-      "images/GTT8_2",
-      "images/GTT8_3"
+      "images/sportshoes/GTT8_1.jpg",
+      "images/sportshoes/GTT8_2.jpg",
+      "images/sportshoes/GTT8_3.jpg"
     ]
   },
 
@@ -274,10 +282,11 @@
     ],
     "date": "2016-10-09",
     "cost": 10000,
+    "type": "sportshoes",
     "image": [
-      "images/GTT9_1",
-      "images/GTT9_2",
-      "images/GTT9_3"
+      "images/sportshoes/GTT9_1.jpg",
+      "images/sportshoes/GTT9_2.jpg",
+      "images/sportshoes/GTT9_3.jpg"
     ]
   }
 ]

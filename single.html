@@ -1,4 +1,4 @@
-<!--A Design by W3layouts 
+<!--A Design by W3layouts
 Author: W3layout
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -7,216 +7,60 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html ng-app="revolutionShop">
 <head>
-<title>Big shope A Ecommerce Category Flat Bootstarp Resposive Website Template | Single :: w3layouts</title>
-<meta http-equiv="Content-Type" charset="utf-8">
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<!--theme-style-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
-<link rel="stylesheet" href="css/etalage.css" type="text/css" media="all" />
-<!--//theme-style-->
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!--fonts-->
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-<!--//fonts-->
+	<title>Big shope A Ecommerce Category Flat Bootstarp Resposive Website Template | Single :: w3layouts</title>
+	<meta http-equiv="Content-Type" charset="utf-8">
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<!--theme-style-->
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" href="css/etalage.css" type="text/css" media="all" />
+	<!--//theme-style-->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!--fonts-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+	<!--//fonts-->
 	<script type="text/javascript" src="js/angular.min.js"></script>
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/xeditable.min.js"></script>
 	<script type="text/javascript" src="js/firebase.js"></script>
+	<script type="text/javascript" src="js/angular-route.js"></script>
 	<script type="text/javascript" src="js/angularfire.min.js"></script>
 	<script type="text/javascript" src="js/controller.js"></script>
 	<script type="text/javascript" src="js/directives.js"></script>
-    <!--Thư viện cho color picker-->
-    <script src="js/jscolor.js"></script>
-    <!--Them thu vien-->
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="js/jquery.etalage.min.js"></script>
-<script>
-			jQuery(document).ready(function($){
-
-				$('#etalage').etalage({
-					thumb_image_width: 300,
-					thumb_image_height: 400,
-					source_image_width: 900,
-					source_image_height: 1200,
-					show_hint: true,
-					click_callback: function(image_anchor, instance_id){
-						alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
-					}
-				});
-
-			});
-		</script>
+	<script type="text/javascript" src="js/components.js"></script>
+	<script type="text/javascript" src="js/jquery.flexisel.js"></script>
+	<!--Add thu vien-->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="js/jquery.etalage.min.js"></script>
 
 </head>
 <body ng-controller="RevolutionController">
-	<!--header-->
-	<header-revolution></header-revolution>
+<!--header-->
+<header-revolution></header-revolution>
+<!---->
+
+<div class="container">
+	<hat-detail></hat-detail>
+
+
 	<!---->
-	
-	 <div class="container"> 
-	 	
-	 	<div class=" single_top">
-	      <div class="single_grid">
-				<div class="grid images_3_of_2">
-						<ul id="etalage">
-							<li>
-								<a href="optionallink.html">
-									<img class="etalage_thumb_image" src="images/s4.jpg" class="img-responsive" />
-									<img class="etalage_source_image" src="images/si4.jpg" class="img-responsive" title="" />
-								</a>
-							</li>
-							<li>
-								<img class="etalage_thumb_image" src="images/s2.jpg" class="img-responsive" />
-								<img class="etalage_source_image" src="images/si2.jpg" class="img-responsive" title="" />
-							</li>
-							<li>
-								<img class="etalage_thumb_image" src="images/s3.jpg" class="img-responsive"  />
-								<img class="etalage_source_image" src="images/si3.jpg"class="img-responsive"  />
-							</li>
-						    <li>
-								<img class="etalage_thumb_image" src="images/s1.jpg" class="img-responsive"  />
-								<img class="etalage_source_image" src="images/si1.jpg"class="img-responsive"  />
-							</li>
-						</ul>
-						 <div class="clearfix"> </div>		
-				  </div> 
-				  <div class="desc1 span_3_of_2">
-				  
-					
-					<h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h4>
-				<div class="cart-b">
-					<div class="left-n ">$329.58</div>
-				    <a class="now-get get-cart-in" data-toggle="modal" data-target="#myModal">ADD TO CART</a>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="myModal" role="dialog">
-                        <div class="modal-dialog">
-
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Add to cart</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <table style="font-family: 'Helvetica Neue';font-size: 20px">
-                                        <tr>
-                                            <td width="100px"><span>Số lượng</span></td>
-                                            <td><input ng-change="testquantity()" type="number" style="width: 100px" ng-model="quantity" min="0" max="99" required/></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td><span>Size</span></td>
-                                            <td height="60px">
-                                                <select style="width: 100px">
-                                                <option value="S">S</option>
-                                                <option value="M">M</option>
-                                                <option value="L">L</option>
-                                                <option value="XL">XL</option>
-                                                <option value="XXL">XXL</option>
-                                            </select>
-                                            </td>
-                                        </tr>
-
-                                        <tr >
-                                            <td><span>Màu</span></td>
-                                            <td><input style="width: 100px" type="color" name="favcolor" value="#ff0000"></td>
-                                        </tr>
-                                    </table>
-                                    <div style="float: right">
-                                        <span>Thành tiền</span>
-                                    </div>
-
-
-
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-				    <div class="clearfix"></div>
-				 </div>
-				 <h6>100 items in stock</h6>
-			   	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-			   	<div class="share">
-							<h5>Share Product :</h5>
-							<ul class="share_nav">
-								<li><a href="#"><img src="images/facebook.png" title="facebook"></a></li>
-								<li><a href="#"><img src="images/twitter.png" title="Twiiter"></a></li>
-								<li><a href="#"><img src="images/rss.png" title="Rss"></a></li>
-								<li><a href="#"><img src="images/gpluse.png" title="Google+"></a></li>
-				    		</ul>
-						</div>
-			   
-				
-				</div>
-          	    <div class="clearfix"> </div>
-          	   </div>
-          	   <ul id="flexiselDemo1">
-			<li><img src="images/pi.jpg" /><div class="grid-flex"><a href="#">Bloch</a><p>Rs 850</p></div></li>
-			<li><img src="images/pi1.jpg" /><div class="grid-flex"><a href="#">Capzio</a><p>Rs 850</p></div></li>
-			<li><img src="images/pi2.jpg" /><div class="grid-flex"><a href="#">Zumba</a><p>Rs 850</p></div></li>
-			<li><img src="images/pi3.jpg" /><div class="grid-flex"><a href="#">Bloch</a><p>Rs 850</p></div></li>
-			<li><img src="images/pi4.jpg" /><div class="grid-flex"><a href="#">Capzio</a><p>Rs 850</p></div></li>
-		 </ul>
-	    <script type="text/javascript">
-		 $(window).load(function() {
-			$("#flexiselDemo1").flexisel({
-				visibleItems: 5,
-				animationSpeed: 1000,
-				autoPlay: true,
-				autoPlaySpeed: 3000,    		
-				pauseOnHover: true,
-				enableResponsiveBreakpoints: true,
-		    	responsiveBreakpoints: { 
-		    		portrait: { 
-		    			changePoint:480,
-		    			visibleItems: 1
-		    		}, 
-		    		landscape: { 
-		    			changePoint:640,
-		    			visibleItems: 2
-		    		},
-		    		tablet: { 
-		    			changePoint:768,
-		    			visibleItems: 3
-		    		}
-		    	}
-		    });
-		    
-		});
-	</script>
-	<script type="text/javascript" src="js/jquery.flexisel.js"></script>
-
-          	    	<div class="toogle">
-				     	<h3 class="m_3">Product Details</h3>
-				     	<p class="m_text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
-				     </div>	
-          	   </div>
-
-          	   <!---->
-<div class="sub-cate">
-				<categories-revolution></categories-revolution>
-					<div class=" chain-grid menu-chain">
-	   		     		<a href="single.html"><img class="img-responsive chain" src="images/wat.jpg" alt=" " /></a>	   		     		
-	   		     		<div class="grid-chain-bottom chain-watch">
-		   		     		<span class="actual dolor-left-grid">300$</span>
-		   		     		<span class="reducedfrom">500$</span>  
-		   		     		<h6>Lorem ipsum dolor</h6>  		     			   		     										
-	   		     		</div>
-	   		     	</div>
-	   		     	 <a class="view-all all-product" href="product.html">VIEW ALL PRODUCTS<span> </span></a> 	
+	<div class="sub-cate">
+		<categories-revolution></categories-revolution>
+		<div class=" chain-grid menu-chain">
+			<a href="single.html"><img class="img-responsive chain" src="images/wat.jpg" alt=" " /></a>
+			<div class="grid-chain-bottom chain-watch">
+				<span class="actual dolor-left-grid">300$</span>
+				<span class="reducedfrom">500$</span>
+				<h6>Lorem ipsum dolor</h6>
 			</div>
-<div class="clearfix"> </div>
 		</div>
-	<!---->
-	<footer-revolution></footer-revolution>
+		<a class="view-all all-product" href="product.html">VIEW ALL PRODUCTS<span> </span></a>
+	</div>
+	<div class="clearfix"> </div>
+</div>
+<!---->
+<footer-revolution></footer-revolution>
 </body>
 </html>

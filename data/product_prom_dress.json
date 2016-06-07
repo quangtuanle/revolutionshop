@@ -28,10 +28,11 @@
     ],
     "date": "2016-06-09",
     "cost": 400,
+    "type": "promdress",
     "image": [
-      "images/H1_1",
-      "images/H1_2",
-      "images/H1_3"
+      "images/promdress/H1_1.jpg",
+      "images/promdress/H1_2.jpg",
+      "images/promdress/H1_3.jpg"
     ]
   },
 
@@ -64,11 +65,12 @@
     ],
     "date": "2016-02-09",
     "cost": 350,
+    "type": "promdress",
     "image": [
-      "images/H2_1",
-      "images/H2_2",
-      "images/H2_3",
-      "images/H2_4"
+      "images/promdress/H2_1.jpg",
+      "images/promdress/H2_2.jpg",
+      "images/promdress/H2_3.jpg",
+      "images/promdress/H2_4.jpg"
     ]
   },
 
@@ -103,9 +105,10 @@
     ],
     "date": "2016-06-10",
     "cost": 500,
+    "type": "promdress",
     "image": [
-      "images/H3_1",
-      "images/H3_2"
+      "images/promdress/H3_1.jpg",
+      "images/promdress/H3_2.jpg"
     ]
   },
 
@@ -137,10 +140,11 @@
     ],
     "date": "2016-06-07",
     "cost": 600,
+    "type": "promdress",
     "image": [
-      "images/H4_1",
-      "images/H4_2",
-      "images/H4_3"
+      "images/promdress/H4_1.jpg",
+      "images/promdress/H4_2.jpg",
+      "images/promdress/H4_3.jpg"
     ]
   },
 
@@ -173,10 +177,11 @@
     ],
     "date": "2016-06-04",
     "cost": 1000,
+    "type": "promdress",
     "image": [
-      "images/H5_1",
-      "images/H5_2",
-      "images/H5_3"
+      "images/promdress/H5_1.png",
+      "images/promdress/H5_2.png",
+      "images/promdress/H5_3.png"
     ]
   },
 
@@ -208,10 +213,11 @@
     ],
     "date": "2016-06-03",
     "cost": 1200,
+    "type": "promdress",
     "image": [
-      "images/H6_1",
-      "images/H6_2",
-      "images/H6_3"
+      "images/promdress/H6_1.jpg",
+      "images/promdress/H6_2.jpg",
+      "images/promdress/H6_3.jpg"
     ]
   },
 
@@ -244,10 +250,11 @@
     ],
     "date": "2016-03-03",
     "cost": 900,
+    "type": "promdress",
     "image": [
-      "images/H7_1",
-      "images/H7_2",
-      "images/H7_3"
+      "images/promdress/H7_1.jpg",
+      "images/promdress/H7_2.jpg",
+      "images/promdress/H7_3.jpg"
     ]
   },
 
@@ -279,10 +286,11 @@
     ],
     "date": "2016-11-10",
     "cost": 750,
+    "type": "promdress",
     "image": [
-      "images/H8_1",
-      "images/H8_2",
-      "images/H8_3"
+      "images/promdress/H8_1.jpg",
+      "images/promdress/H8_2.jpg",
+      "images/promdress/H8_3.jpg"
     ]
   },
 
@@ -315,10 +323,11 @@
     ],
     "date": "2016-12-12",
     "cost": 200,
+    "type": "promdress",
     "image": [
-      "images/H9_1",
-      "images/H9_2",
-      "images/H9_3"
+      "images/promdress/H9_1.jpg",
+      "images/promdress/H9_2.jpg",
+      "images/promdress/H9_3.jpg"
     ]
   }
 ]

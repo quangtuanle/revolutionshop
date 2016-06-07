@@ -20,10 +20,11 @@
     ],
     "date": "2016-06-09",
     "cost": 100,
+    "type": "sandal",
     "image": [
-      "images/D1_1",
-      "images/D1_2",
-      "images/D1_3"
+      "images/sandal/D1_1.jpg",
+      "images/sandal/D1_2.jpg",
+      "images/sandal/D1_3.jpg"
     ]
   },
 
@@ -49,10 +50,11 @@
     ],
     "date": "2016-02-09",
     "cost": 100,
+    "type": "sandal",
     "image": [
-      "images/D2_1",
-      "images/D2_2",
-      "images/D2_3"
+      "images/sandal/D2_1.jpg",
+      "images/sandal/D2_2.jpg",
+      "images/sandal/D2_3.jpg"
     ]
   },
 
@@ -86,11 +88,12 @@
     ],
     "date": "2016-06-10",
     "cost": 100,
+    "type": "sandal",
     "image": [
-      "images/D3_1",
-      "images/D3_2",
-      "images/D3_3",
-      "images/D3_4"
+      "images/sandal/D3_1.jpg",
+      "images/sandal/D3_2.jpg",
+      "images/sandal/D3_3.jpg",
+      "images/sandal/D3_4.jpg"
     ]
   },
 
@@ -116,10 +119,11 @@
     ],
     "date": "2016-06-07",
     "cost": 100,
+    "type": "sandal",
     "image": [
-      "images/D4_1",
-      "images/D4_2",
-      "images/D4_3"
+      "images/sandal/D4_1.jpg",
+      "images/sandal/D4_2.jpg",
+      "images/sandal/D4_3.jpg"
     ]
   },
 
@@ -146,10 +150,11 @@
     ],
     "date": "2016-06-04",
     "cost": 100,
+    "type": "sandal",
     "image": [
-      "images/D5_1",
-      "images/D5_2",
-      "images/D5_3"
+      "images/sandal/D5_1.jpg",
+      "images/sandal/D5_2.jpg",
+      "images/sandal/D5_3.jpg"
     ]
   },
 
@@ -176,10 +181,11 @@
     ],
     "date": "2016-06-03",
     "cost": 100,
+    "type": "sandal",
     "image": [
-      "images/D6_1",
-      "images/D6_2",
-      "images/D6_3"
+      "images/sandal/D6_1.jpg",
+      "images/sandal/D6_2.jpg",
+      "images/sandal/D6_3.jpg"
     ]
   },
 
@@ -207,10 +213,11 @@
     ],
     "date": "2016-03-03",
     "cost": 100,
+    "type": "sandal",
     "image": [
-      "images/D7_1",
-      "images/D7_2",
-      "images/D7_3"
+      "images/sandal/D7_1.jpg",
+      "images/sandal/D7_2.jpg",
+      "images/sandal/D7_3.jpg"
     ]
   },
 
@@ -237,10 +244,11 @@
     ],
     "date": "2016-11-10",
     "cost": 100,
+    "type": "sandal",
     "image": [
-      "images/D8_1",
-      "images/D8_2",
-      "images/D8_3"
+      "images/sandal/D8_1.jpg",
+      "images/sandal/D8_2.jpg",
+      "images/sandal/D8_3.jpg"
     ]
   },
 
@@ -268,10 +276,11 @@
     ],
     "date": "2016-12-12",
     "cost": 100,
+    "type": "sandal",
     "image": [
-      "images/D9_1",
-      "images/D9_2",
-      "images/D9_3"
+      "images/sandal/D9_1.jpg",
+      "images/sandal/D9_2.jpg",
+      "images/sandal/D9_3.jpg"
     ]
   }
 ]

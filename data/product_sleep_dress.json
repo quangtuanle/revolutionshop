@@ -26,10 +26,11 @@
     ],
     "date": "2016-06-09",
     "cost": 100,
+    "type": "sleepdress",
     "image": [
-      "images/DN1_1",
-      "images/DN1_2",
-      "images/DN1_3"
+      "images/sleepdress/DN1_1.jpg",
+      "images/sleepdress/DN1_2.jpg",
+      "images/sleepdress/DN1_3.jpg"
     ]
   },
 
@@ -60,10 +61,11 @@
     ],
     "date": "2016-02-09",
     "cost": 100,
+    "type": "sleepdress",
     "image": [
-      "images/DN2_1",
-      "images/DN2_2",
-      "images/DN2_3"
+      "images/sleepdress/DN2_1.jpg",
+      "images/sleepdress/DN2_2.jpg",
+      "images/sleepdress/DN2_3.jpg"
     ]
   },
 
@@ -96,10 +98,11 @@
     ],
     "date": "2016-06-10",
     "cost": 100,
+    "type": "sleepdress",
     "image": [
-      "images/DN3_1",
-      "images/DN3_2",
-      "images/DN3_3"
+      "images/sleepdress/DN3_1.jpg",
+      "images/sleepdress/DN3_2.jpg",
+      "images/sleepdress/DN3_3.jpg"
     ]
   },
 
@@ -129,10 +132,11 @@
     ],
     "date": "2016-06-07",
     "cost": 100,
+    "type": "sleepdress",
     "image": [
-      "images/DN4_1",
-      "images/DN4_2",
-      "images/DN4_3"
+      "images/sleepdress/DN4_1.jpg",
+      "images/sleepdress/DN4_2.jpg",
+      "images/sleepdress/DN4_3.jpg"
     ]
   },
 
@@ -163,10 +167,11 @@
     ],
     "date": "2016-06-04",
     "cost": 100,
+    "type": "sleepdress",
     "image": [
-      "images/DN5_1",
-      "images/DN5_2",
-      "images/DN5_3"
+      "images/sleepdress/DN5_1.jpg",
+      "images/sleepdress/DN5_2.jpg",
+      "images/sleepdress/DN5_3.jpg"
     ]
   },
 
@@ -196,11 +201,12 @@
     ],
     "date": "2016-06-03",
     "cost": 100,
+    "type": "sleepdress",
     "image": [
-      "images/DN6_1",
-      "images/DN6_2",
-      "images/DN6_3",
-      "images/DN6_4"
+      "images/sleepdress/DN6_1.jpg",
+      "images/sleepdress/DN6_2.png",
+      "images/sleepdress/DN6_3.png",
+      "images/sleepdress/DN6_4.png"
     ]
   },
 
@@ -231,10 +237,11 @@
     ],
     "date": "2016-03-03",
     "cost": 100,
+    "type": "sleepdress",
     "image": [
-      "images/DN7_1",
-      "images/DN7_2",
-      "images/DN7_3"
+      "images/sleepdress/DN7_1.jpg",
+      "images/sleepdress/DN7_2.jpg",
+      "images/sleepdress/DN7_3.jpg"
     ]
   },
 
@@ -264,10 +271,11 @@
     ],
     "date": "2016-11-10",
     "cost": 100,
+    "type": "sleepdress",
     "image": [
-      "images/DN8_1",
-      "images/DN8_2",
-      "images/DN8_3"
+      "images/sleepdress/DN8_1.jpg",
+      "images/sleepdress/DN8_2.png",
+      "images/sleepdress/DN8_3.jpg"
     ]
   },
 
@@ -298,10 +306,11 @@
     ],
     "date": "2016-12-12",
     "cost": 100,
+    "type": "sleepdress",
     "image": [
-      "images/DN9_1",
-      "images/DN9_2",
-      "images/DN9_3"
+      "images/sleepdress/DN9_1.jpg",
+      "images/sleepdress/DN9_2.jpg",
+      "images/sleepdress/DN9_3.jpg"
     ]
   }
 ]

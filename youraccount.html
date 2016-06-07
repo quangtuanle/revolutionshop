@@ -18,11 +18,14 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/xeditable.min.js"></script>
     <script type="text/javascript" src="js/firebase.js"></script>
+    <script type="text/javascript" src="js/angular-route.js"></script>
     <script type="text/javascript" src="js/angularfire.min.js"></script>
-    <script type="text/javascript"
-            src="//api.filestackapi.com/filestack.js"></script>
     <script type="text/javascript" src="js/controller.js"></script>
     <script type="text/javascript" src="js/directives.js"></script>
+    <script type="text/javascript" src="js/components.js"></script>
+    <script type="text/javascript" src="js/jquery.flexisel.js"></script>
+    <script src="js/jquery.etalage.min.js"></script>
+    <script type="text/javascript" src="//api.filestackapi.com/filestack.js"></script>
 </head>
 <body ng-controller="AccountController">
 <!--header-->
@@ -32,8 +35,8 @@
     <div class="profile_grid" ng-controller="ProfileController as profileCtrl">
         <div id="profile-resume">
             <div class="profile-avatar">
-                <imagepicker></imagepicker>
-                <img ng-src="{{urlImg}}"/>
+                <image-picker></image-picker>
+                <img class="avatar" width="240px" height="240px" ng-src="{{urlImg}}" />
             </div>
             <div class="profile-info">
                 <ul class="profile-info-content">

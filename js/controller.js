@@ -1,5 +1,65 @@
 (function() {
-    var app = angular.module('revolutionShop', ['revolution-directive', 'firebase', 'xeditable']);
+    var app = angular.module('revolutionShop', [
+        'revolution-directive',
+        'firebase',
+        'xeditable',
+        'ngRoute',
+        'revolution-component'
+    ]);
+
+    app.config(['$locationProvider', '$routeProvider',
+        function config($locationProvider, $routeProvider) {
+            $locationProvider.hashPrefix('!');
+
+            $routeProvider.
+                when('/product', {
+                    template: '<product-all></product-all>'
+                }).
+                when('/product/hat', {
+                    template: '<hat-list></hat-list>'
+                }).
+                when('/product/hat/:hatId', {
+                    template: '<hat-detail></hat-detail>'
+                }).
+                when('/product/skirt', {
+                    template: '<skirt-list></skirt-list>'
+                }).
+                when('/product/skirt/:skirtId', {
+                    template: '<skirt-detail></skirt-detail>'
+                }).
+                when('/product/sleepdress', {
+                    template: '<sleepdress-list></sleepdress-list>'
+                }).
+                when('/product/sleepdress/:sleepdressId', {
+                    template: '<sleepdress-detail></sleepdress-detail>'
+                }).
+                when('/product/promdress', {
+                    template: '<promdress-list></promdress-list>'
+                }).
+                when('/product/promdress/:promdressId', {
+                    template: '<promdress-detail></promdress-detail>'
+                }).
+                when('/product/sandal', {
+                    template: '<sandal-list></sandal-list>'
+                }).
+                when('/product/sandal/:sandalId', {
+                    template: '<sandal-detail></sandal-detail>'
+                }).
+                when('/product/lazyshoes', {
+                    template: '<lazyshoes-list></lazyshoes-list>'
+                }).
+                when('/product/lazyshoes/:lazyshoesId', {
+                    template: '<lazyshoes-detail></lazyshoes-detail>'
+                }).
+                when('/product/sportshoes', {
+                    template: '<sportshoes-list></sportshoes-list>'
+                }).
+                when('/product/sportshoes/:sportshoesId', {
+                    template: '<sportshoes-detail></sportshoes-detail>'
+                }).
+                otherwise('/product');
+        }
+    ]);
 
     app.run(function(editableOptions) {
         editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
@@ -13,7 +73,6 @@
     ]);
 
     app.controller('RevolutionController', ['$scope', 'Auth',
-
         function($scope, Auth){
 
             $scope.auth = Auth;
@@ -29,20 +88,9 @@
             $scope.logout = function(){
                 $scope.auth.$unauth();
             }
-            $scope.watch("quantity", function () {
-                if ($scope.quantity < 0)
-                    $scope.quantity = 0;
-
-            })
-
-            $scope.testquantiy = function () {
-                if ($scope.quantity < 0)
-                    $scope.quantity = 0;
-            }
 
 
         }
-
     ]);
 
     app.controller('AccountController', ['$scope', 'Auth',
@@ -62,8 +110,9 @@
             }
         }
     ]);
-    app.component('imagepicker', {
-        templateUrl:"template/imagepicker.html",
+
+    app.component('imagePicker', {
+        templateUrl:"template/image-picker.html",
         controller: ['$scope', function($scope) {
             filepicker.setKey("AwhE62zXS3ittGq7Xovynz");
             $scope.browserImage = function () {
@@ -75,16 +124,14 @@
                     },
                     function (img) {
                         var url = img.url;
-                        console.log(url);
                         $scope.urlImg = url;
-
+                        console.log($scope.urlImg);
+                        $scope.$digest();
                     }
                 );
-
             }
-
-        }
-    ]});
+        }]
+    });
 
     app.controller('ProfileController', ["$scope",
         function($scope){
@@ -97,7 +144,7 @@
 
                 refUserActive.on("value", function(snapshot) {
                     $scope.dataUser = snapshot.val();
-                    console.log($scope.dataUser.first_name);
+
                     // Might need to use $digest to update $scope.
                     $scope.$digest();
                 }, function (errorObject) {
@@ -107,8 +154,6 @@
             }, function (errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
-
-
         }
     ]);
 
@@ -147,8 +192,8 @@
 
     });
 
-    app.controller('LoginController', ['$scope',
-        function($scope) {
+    app.controller('LoginController', ['$scope', '$http',
+        function($scope, $http) {
             this.login = function () {
                 var ref = new Firebase("https://revolution-shop.firebaseio.com");
                 ref.authWithPassword({
@@ -161,9 +206,11 @@
                         console.log("Authenticated successfully with payload:", authData);
 
                         // ID Active
-                        ref.update({
-                            active: authData.uid
-                        });
+                        //ref.update({
+                        //    active: authData.uid
+                        //});
+                        $scope.dataUpdate = authData.uid;
+                        $http({ method: 'PUT', url: '/data/account_active.json', data: $scope.dataUpdate });
 
                         window.location = "youraccount.html";
                     }
@@ -179,9 +226,11 @@
                         console.log("Authenticated successfully with payload:", authData);
 
                         // ID Active
-                        ref.update({
-                           active: authData.uid
-                        });
+                        //ref.update({
+                        //   active: authData.uid
+                        //});
+                        $scope.dataUpdate = authData.uid;
+                        $http({ method: 'PUT', url: '/data/account_active.json', data: $scope.dataUpdate });
 
                         var isUserRef = new Firebase("https://revolution-shop.firebaseio.com/users/" + authData.uid);
                         isUserRef.once("value", function(snapshot) {
@@ -216,9 +265,13 @@
                         console.log("Authenticated successfully with payload:", authData);
 
                         // ID Active
-                        ref.update({
-                            active: authData.uid
-                        });
+                        //ref.update({
+                        //    active: authData.uid
+                        //});
+                        $scope.dataUpdate = { id: "" };
+                        $scope.dataUpdate.id = authData.uid;
+                        $http({ method: 'PUT', url: './data/account_active.json', data: $scope.dataUpdate });
+                        console.log($scope.dataUpdate);
 
                         var isUserRef = new Firebase("https://revolution-shop.firebaseio.com/users/" + authData.uid);
                         isUserRef.once("value", function(snapshot) {
@@ -250,6 +303,7 @@
         this.register = function(){
             if ($scope.passwordRegister !== $scope.rePasswordRegister){
                 console.log('Password is not duplicated');
+                window.alert("PASSWORD IS NOT DUPLICATED!");
                 return;
             }
 
@@ -260,6 +314,7 @@
             }, function(error, userData) {
                 if (error) {
                     console.log("Error creating user:", error);
+                    window.alert("USER IS EXISTED!");
                 } else {
                     // ID Active
                     ref.update({
@@ -276,6 +331,7 @@
                         address: ""
                     });
                     console.log("Successfully created user account with uid:", userData.uid);
+                    window.location = "youraccount.html";
                 }
             });
         };

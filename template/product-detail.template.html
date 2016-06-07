@@ -1,0 +1,107 @@
+<div class=" single_top">
+    <div class="single_grid">
+        <div class="grid images_3_of_2">
+            <ul id="etalage">
+                <li>
+                    <a href="optionallink.html">
+                        <img class="etalage_thumb_image" src="images/s4.jpg" class="img-responsive" />
+                        <img class="etalage_source_image" src="images/si4.jpg" class="img-responsive" title="" />
+                    </a>
+                </li>
+                <li>
+                    <img class="etalage_thumb_image" src="images/s2.jpg" class="img-responsive" />
+                    <img class="etalage_source_image" src="images/si2.jpg" class="img-responsive" title="" />
+                </li>
+                <li>
+                    <img class="etalage_thumb_image" src="images/s3.jpg" class="img-responsive"  />
+                    <img class="etalage_source_image" src="images/si3.jpg"class="img-responsive"  />
+                </li>
+                <li>
+                    <img class="etalage_thumb_image" src="images/s1.jpg" class="img-responsive"  />
+                    <img class="etalage_source_image" src="images/si1.jpg"class="img-responsive"  />
+                </li>
+            </ul>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="desc1 span_3_of_2">
+            <h4>{{ product.name }}</h4>
+            <div class="cart-b">
+                <div class="left-n ">{{ product.cost | currency }}</div>
+                <a class="now-get get-cart-in" data-toggle="modal" data-target="#myModal">ADD TO CART</a>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Add to cart</h4>
+                            </div>
+                            <div class="modal-body">
+                                <table style="font-family: 'Helvetica Neue';font-size: 20px">
+                                    <tr>
+                                        <td width="100px"><span>Số lượng</span></td>
+                                        <td><input ng-change="testquantity()" type="number" style="width: 100px" ng-model="quantity" min="0" max="99" required/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span>Size</span></td>
+                                        <td height="60px">
+                                            <select style="width: 100px">
+                                                <option value="S">S</option>
+                                                <option value="M">M</option>
+                                                <option value="L">L</option>
+                                                <option value="XL">XL</option>
+                                                <option value="XXL">XXL</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+
+                                    <tr >
+                                        <td><span>Màu</span></td>
+                                        <td><input style="width: 100px" type="color" name="favcolor" value="#ff0000"></td>
+                                    </tr>
+                                </table>
+                                <div style="float: right">
+                                    <span>Thành tiền</span>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <h6>{{ product.quantity }} items in stock</h6>
+            <ul>
+                <li style="margin: 5px" ng-repeat="inf in product.info">{{ inf }}</li>
+            </ul>
+            <div class="share" style="margin-top: 30px;">
+                <h5>Share Product :</h5>
+                <ul class="share_nav">
+                    <li><a href="#"><img src="images/facebook.png" title="facebook"></a></li>
+                    <li><a href="#"><img src="images/twitter.png" title="Twiiter"></a></li>
+                    <li><a href="#"><img src="images/rss.png" title="Rss"></a></li>
+                    <li><a href="#"><img src="images/gpluse.png" title="Google+"></a></li>
+                </ul>
+            </div>
+
+
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+    <ul id="flexiselDemo1">
+        <li><img src="images/pi.jpg" /><div class="grid-flex"><a href="#">Bloch</a><p>Rs 850</p></div></li>
+        <li><img src="images/pi1.jpg" /><div class="grid-flex"><a href="#">Capzio</a><p>Rs 850</p></div></li>
+        <li><img src="images/pi2.jpg" /><div class="grid-flex"><a href="#">Zumba</a><p>Rs 850</p></div></li>
+        <li><img src="images/pi3.jpg" /><div class="grid-flex"><a href="#">Bloch</a><p>Rs 850</p></div></li>
+        <li><img src="images/pi4.jpg" /><div class="grid-flex"><a href="#">Capzio</a><p>Rs 850</p></div></li>
+    </ul>
+
+    <div class="toogle">
+        <h3 class="m_3">Product Details</h3>
+        <p ng-repeat="det in product.detail" class="m_text">{{ det }}</p>
+    </div>
+</div>

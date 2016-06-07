@@ -20,10 +20,11 @@
     ],
     "date": "2016-06-09",
     "cost": 100,
+    "type": "lazyshoes",
     "image": [
-      "images/GL1_1.png",
-      "images/GL1_2.png",
-      "images/GL1_3.png"
+      "images/lazyshoes/GL1_1.png",
+      "images/lazyshoes/GL1_2.png",
+      "images/lazyshoes/GL1_3.png"
     ]
   },
 
@@ -53,10 +54,11 @@
     ],
     "date": "2016-06-10",
     "cost": 120,
+    "type": "lazyshoes",
     "image": [
-      "images/GL2_1.jpg",
-      "images/GL2_2.jpg",
-      "images/GL2_3.jpg"
+      "images/lazyshoes/GL2_1.jpg",
+      "images/lazyshoes/GL2_2.jpg",
+      "images/lazyshoes/GL2_3.jpg"
     ]
   },
 
@@ -90,10 +92,11 @@
     ],
     "date": "2016-06-11",
     "cost": 110,
+    "type": "lazyshoes",
     "image": [
-      "images/GL3_1.png",
-      "images/GL3_2.png",
-      "images/GL3_3.png"
+      "images/lazyshoes/GL3_1.png",
+      "images/lazyshoes/GL3_2.png",
+      "images/lazyshoes/GL3_3.png"
     ]
   },
 
@@ -119,10 +122,11 @@
     ],
     "date": "2016-06-12",
     "cost": 115,
+    "type": "lazyshoes",
     "image": [
-      "images/GL4_1.png",
-      "images/GL4_2.png",
-      "images/GL4_3.png"
+      "images/lazyshoes/GL4_1.png",
+      "images/lazyshoes/GL4_2.png",
+      "images/lazyshoes/GL4_3.png"
     ]
   },
 
@@ -149,10 +153,11 @@
     ],
     "date": "2016-07-02",
     "cost": 125,
+    "type": "lazyshoes",
     "image": [
-      "images/GL5_1.png",
-      "images/GL5_2.png",
-      "images/GL5_3.png"
+      "images/lazyshoes/GL5_1.png",
+      "images/lazyshoes/GL5_2.png",
+      "images/lazyshoes/GL5_3.png"
     ]
   },
 
@@ -181,10 +186,11 @@
     ],
     "date": "2016-07-03",
     "cost": 135,
+    "type": "lazyshoes",
     "image": [
-      "images/GL6_1.jpg",
-      "images/GL6_2.jpg",
-      "images/GL6_3.jpg"
+      "images/lazyshoes/GL6_1.jpg",
+      "images/lazyshoes/GL6_2.jpg",
+      "images/lazyshoes/GL6_3.jpg"
     ]
   },
 
@@ -215,10 +221,11 @@
     ],
     "date": "2016-05-09",
     "cost": 90,
+    "type": "lazyshoes",
     "image": [
-      "images/GL7_1.jpg",
-      "images/GL7_2.jpg",
-      "images/GL7_3.jpg"
+      "images/lazyshoes/GL7_1.jpg",
+      "images/lazyshoes/GL7_2.jpg",
+      "images/lazyshoes/GL7_3.jpg"
     ]
   },
 
@@ -244,10 +251,11 @@
     ],
     "date": "2016-01-09",
     "cost": 200,
+    "type": "lazyshoes",
     "image": [
-      "images/GL8_1.png",
-      "images/GL8_2.png",
-      "images/GL8_3.png"
+      "images/lazyshoes/GL8_1.png",
+      "images/lazyshoes/GL8_2.png",
+      "images/lazyshoes/GL8_3.png"
     ]
   },
 
@@ -275,10 +283,11 @@
     ],
     "date": "2016-10-09",
     "cost": 190,
+    "type": "lazyshoes",
     "image": [
-      "images/GL9_1.png",
-      "images/GL9_2.png",
-      "images/GL9_3.png"
+      "images/lazyshoes/GL9_1.png",
+      "images/lazyshoes/GL9_2.png",
+      "images/lazyshoes/GL9_3.png"
     ]
   }
 ]

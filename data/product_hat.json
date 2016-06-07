@@ -22,6 +22,7 @@
     ],
     "date": "2016-06-09",
     "cost": 100,
+    "type": "hat",
     "image": [
       "images/hat/N1_1.png",
       "images/hat/N1_2.png",
@@ -52,6 +53,7 @@
     ],
     "date": "2016-02-09",
     "cost": 75,
+    "type": "hat",
     "image": [
       "images/hat/N2_1.jpg",
       "images/hat/N2_2.jpg",
@@ -88,6 +90,7 @@
     ],
     "date": "2016-06-10",
     "cost": 20,
+    "type": "hat",
     "image": [
       "images/hat/N3_1.jpg",
       "images/hat/N3_2.jpg",
@@ -117,6 +120,7 @@
     ],
     "date": "2016-06-07",
     "cost": 30,
+    "type": "hat",
     "image": [
       "images/hat/N4_1.jpg",
       "images/hat/N4_2.jpg",
@@ -147,6 +151,7 @@
     ],
     "date": "2016-06-04",
     "cost": 40,
+    "type": "hat",
     "image": [
       "images/hat/N5_1.jpg",
       "images/hat/N5_2.jpg",
@@ -176,6 +181,7 @@
     ],
     "date": "2016-06-03",
     "cost": 50,
+    "type": "hat",
     "image": [
       "images/hat/N6_1.jpg",
       "images/hat/N6_2.jpg",
@@ -207,6 +213,7 @@
     ],
     "date": "2016-03-03",
     "cost": 80,
+    "type": "hat",
     "image": [
       "images/hat/N7_1.jpg",
       "images/hat/N7_2.jpg",
@@ -238,6 +245,7 @@
     ],
     "date": "2016-11-10",
     "cost": 55,
+    "type": "hat",
     "image": [
       "images/hat/N8_1.jpg",
       "images/hat/N8_2.jpg",
@@ -269,6 +277,7 @@
     ],
     "date": "2016-12-12",
     "cost": 90,
+    "type": "hat",
     "image": [
       "images/hat/N9_1.jpg",
       "images/hat/N9_2.jpg",

@@ -25,10 +25,11 @@
     ],
     "date": "2016-06-09",
     "cost": 3000,
+    "type": "skirt",
     "image": [
-      "images/V1_1",
-      "images/V1_2",
-      "images/V1_3"
+      "images/skirt/V1_1.jpg",
+      "images/skirt/V1_2.jpg",
+      "images/skirt/V1_3.jpg"
     ]
   },
 
@@ -59,9 +60,10 @@
     ],
     "date": "2016-02-09",
     "cost": 5000,
+    "type": "skirt",
     "image": [
-      "images/V2_1",
-      "images/V2_2"
+      "images/skirt/V2_1.jpg",
+      "images/skirt/V2_2.jpg"
     ]
   },
 
@@ -95,9 +97,10 @@
     ],
     "date": "2016-06-10",
     "cost": 1500,
+    "type": "skirt",
     "image": [
-      "images/V3_1",
-      "images/V3_2"
+      "images/skirt/V3_1.jpg",
+      "images/skirt/V3_2.jpg"
     ]
   },
 
@@ -127,10 +130,11 @@
     ],
     "date": "2016-06-07",
     "cost": 2900,
+    "type": "skirt",
     "image": [
-      "images/V4_1",
-      "images/V4_2",
-      "images/V4_3"
+      "images/skirt/V4_1.jpg",
+      "images/skirt/V4_2.jpg",
+      "images/skirt/V4_3.jpg"
     ]
   },
 
@@ -160,10 +164,11 @@
     ],
     "date": "2016-06-04",
     "cost": 3500,
+    "type": "skirt",
     "image": [
-      "images/V5_1",
-      "images/V5_2",
-      "images/V5_3"
+      "images/skirt/V5_1.jpg",
+      "images/skirt/V5_2.jpg",
+      "images/skirt/V5_3.jpg"
     ]
   },
 
@@ -194,10 +199,11 @@
     ],
     "date": "2016-06-03",
     "cost": 6000,
+    "type": "skirt",
     "image": [
-      "images/V6_1",
-      "images/V6_2",
-      "images/V6_3"
+      "images/skirt/V6_1.jpg",
+      "images/skirt/V6_2.jpg",
+      "images/skirt/V6_3.jpg"
     ]
   },
 
@@ -228,10 +234,11 @@
     ],
     "date": "2016-03-03",
     "cost": 7000,
+    "type": "skirt",
     "image": [
-      "images/V7_1",
-      "images/V7_2",
-      "images/V7_3"
+      "images/skirt/V7_1.jpg",
+      "images/skirt/V7_2.jpg",
+      "images/skirt/V7_3.jpg"
     ]
   },
 
@@ -262,10 +269,11 @@
     ],
     "date": "2016-11-10",
     "cost": 9000,
+    "type": "skirt",
     "image": [
-      "images/V8_1",
-      "images/V8_2",
-      "images/V8_3"
+      "images/skirt/V8_1.jpg",
+      "images/skirt/V8_2.jpg",
+      "images/skirt/V8_3.jpg"
     ]
   },
 
@@ -295,9 +303,10 @@
     ],
     "date": "2016-12-12",
     "cost": 8900,
+    "type": "skirt",
     "image": [
-      "images/V9_1",
-      "images/V9_2"
+      "images/skirt/V9_1.jpg",
+      "images/skirt/V9_2.jpg"
     ]
   }
 ]

@@ -1,0 +1,37 @@
+<div class="women-product">
+    <div class=" w_content">
+        <div class="women">
+            <a href="#"><h4>Enthecwear - <span>4449 itemms</span> </h4></a>
+            <ul class="w_nav">
+                <li>Sort : </li>
+                <li><a class="active" href="#">popular</a></li> |
+                <li><a href="#">new </a></li> |
+                <li><a href="#">discount</a></li> |
+                <li><a href="#">price: Low High </a></li>
+                <div class="clearfix"> </div>
+            </ul>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <!-- grids_of_4 -->
+    <div class="grid-product">
+        <div class="product-grid" ng-repeat="product in products">
+            <ul>
+                <li style="float:left; margin: 10px">
+                    <div class="content_box"><a href="single.html"></a>
+                        <div class="left-grid-view grid-view-left">
+                            <img ng-src="{{product.image[0]}}" class="img-responsive watch-right" alt=""/>
+                            <div class="mask">
+                                <div class="info">Quick View</div>
+                            </div>
+                        </div>
+                        <h4><a href="#!/product/{{product.type}}/{{product.id}}">{{product.name}}</a></h4>
+                        <p>{{hat.info[0] | limitTo:40}}</p>
+                        Rs. 499
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>

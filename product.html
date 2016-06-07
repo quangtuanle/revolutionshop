@@ -1,4 +1,4 @@
-<!--A Design by W3layouts 
+<!--A Design by W3layouts
 Author: W3layout
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -7,89 +7,58 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html ng-app="revolutionShop">
 <head>
-<title>Big shope A Ecommerce Category Flat Bootstarp Resposive Website Template | Product :: w3layouts</title>
-<meta http-equiv="Content-Type" charset="utf-8">
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<!--theme-style-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
-<!--//theme-style-->
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!--fonts-->
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-<!--//fonts-->
+	<title>Big shope A Ecommerce Category Flat Bootstarp Resposive Website Template | Product :: w3layouts</title>
+	<meta http-equiv="Content-Type" charset="utf-8">
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<!--theme-style-->
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<!--//theme-style-->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!--fonts-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+	<!--//fonts-->
 	<script type="text/javascript" src="js/angular.min.js"></script>
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/xeditable.min.js"></script>
 	<script type="text/javascript" src="js/firebase.js"></script>
+	<script type="text/javascript" src="js/angular-route.js"></script>
 	<script type="text/javascript" src="js/angularfire.min.js"></script>
 	<script type="text/javascript" src="js/controller.js"></script>
 	<script type="text/javascript" src="js/directives.js"></script>
-
-
-<!--script-->
+	<script type="text/javascript" src="js/components.js"></script>
+	<script type="text/javascript" src="js/jquery.flexisel.js"></script>
+	<!--Add thu vien-->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="js/jquery.etalage.min.js"></script>
+	<!--script-->
 </head>
 <body ng-controller="RevolutionController">
-	<!--header-->
-	<header-revolution></header-revolution>
-	<!---->
-	<!-- start content -->
-	<div class="container">
-		
-	<div class="women-product">
-		<div class=" w_content">
-			<div class="women">
-				<a href="#"><h4>Enthecwear - <span>4449 itemms</span> </h4></a>
-				<ul class="w_nav">
-					<li>Sort : </li>
-			     	<li><a class="active" href="#">popular</a></li> |
-			     	<li><a href="#">new </a></li> |
-			     	<li><a href="#">discount</a></li> |
-			     	<li><a href="#">price: Low High </a></li> 
-			     <div class="clearfix"> </div>	
-			     </ul>
-			     <div class="clearfix"> </div>	
-			</div>
-		</div>
-		<!-- grids_of_4 -->
-		<div class="grid-product" ng-controller="ProductController as productCtrl">
-		  <div class="product-grid" ng-repeat="hat in hats">
-			  <ul >
+<!--header-->
+<header-revolution></header-revolution>
+<!---->
+<!-- start content -->
+<div class="container">
 
-			  <li style="float:left; margin: 10px">
-				<div class="content_box"><a href="single.html"></a>
-					<div class="left-grid-view grid-view-left">
-						 <img ng-src="images/hat/N1_1.png" class="img-responsive watch-right" alt=""/>
-							<div class="mask">
-								<div class="info">Quick View</div>
-							</div>
+	<div ng-view></div>
 
-					</div>
-				    <h4><a href="#">{{hat.name}}</a></h4>
-				     <p>{{hat.info[0] | limitTo:40}}</p>
-				     Rs. 499
-			   	</div>
-			</li>
-			</ul>
-		  </div>
-			<div class="clearfix"> </div>
-		</div>
-	</div>
 	<div class="sub-cate">
-				<categories-revolution></categories-revolution>
-					<div class=" chain-grid menu-chain">
-	   		     		<a href="single.html"><img class="img-responsive chain" src="images/wat.jpg" alt=" " /></a>	   		     		
-	   		     		<div class="grid-chain-bottom chain-watch">
-		   		     		<span class="actual dolor-left-grid">300$</span>
-		   		     		<span class="reducedfrom">500$</span>  
-		   		     		<h6>Lorem ipsum dolor</h6>  		     			   		     										
-	   		     		</div>
-	   		     	</div>
-	   		     	 <a class="view-all all-product" href="product.html">VIEW ALL PRODUCTS<span> </span></a> 	
+		<categories-revolution></categories-revolution>
+		<div class=" chain-grid menu-chain">
+			<a href="single.html"><img class="img-responsive chain" src="images/wat.jpg" alt=" " /></a>
+			<div class="grid-chain-bottom chain-watch">
+				<span class="actual dolor-left-grid">300$</span>
+				<span class="reducedfrom">500$</span>
+				<h6>Lorem ipsum dolor</h6>
 			</div>
+		</div>
+		<a class="view-all all-product" href="#!/product">VIEW ALL PRODUCTS<span> </span></a>
+	</div>
 	<div class="clearfix"> </div>
 </div>
-	<!---->
-	<footer-revolution></footer-revolution>
+<!---->
+<footer-revolution></footer-revolution>
 </body>
 </html>

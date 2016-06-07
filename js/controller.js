@@ -124,9 +124,11 @@
                     },
                     function (img) {
                         var url = img.url;
-                        $scope.urlImg = url;
-                        console.log($scope.urlImg);
-                        $scope.$digest();
+
+                        var refUserActive = new Firebase("https://revolution-shop.firebaseio.com/users/" + localStorage.getItem("activeId"));
+                        refUserActive.update({ avatar: url });
+
+                        location.reload();
                     }
                 );
             }
@@ -135,22 +137,13 @@
 
     app.controller('ProfileController', ["$scope",
         function($scope){
-            var ref = new Firebase("https://revolution-shop.firebaseio.com/active");
+            var refUserActive = new Firebase("https://revolution-shop.firebaseio.com/users/" + localStorage.getItem("activeId"));
 
-            ref.on("value", function(snapshot) {
-                console.log(snapshot.val());
+            refUserActive.once("value", function(snapshot) {
+                $scope.dataUser = snapshot.val();
 
-                var refUserActive = new Firebase("https://revolution-shop.firebaseio.com/users/" + snapshot.val());
-
-                refUserActive.on("value", function(snapshot) {
-                    $scope.dataUser = snapshot.val();
-
-                    // Might need to use $digest to update $scope.
-                    $scope.$digest();
-                }, function (errorObject) {
-                    console.log("The read failed: " + errorObject.code);
-                });
-
+                // Might need to use $digest to update $scope.
+                $scope.$digest();
             }, function (errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
@@ -201,16 +194,14 @@
                     password: $scope.passwordLogin
                 }, function (error, authData) {
                     if (error) {
+                        $scope.checkEmailPass = true;
                         console.log("Login Failed!", error);
+                        $scope.$digest();
                     } else {
+                        $scope.checkEmailPass = false;
                         console.log("Authenticated successfully with payload:", authData);
 
-                        // ID Active
-                        //ref.update({
-                        //    active: authData.uid
-                        //});
-                        $scope.dataUpdate = authData.uid;
-                        $http({ method: 'PUT', url: '/data/account_active.json', data: $scope.dataUpdate });
+                        localStorage.setItem("activeId", authData.uid);
 
                         window.location = "youraccount.html";
                     }
@@ -225,20 +216,17 @@
                     } else {
                         console.log("Authenticated successfully with payload:", authData);
 
-                        // ID Active
-                        //ref.update({
-                        //   active: authData.uid
-                        //});
-                        $scope.dataUpdate = authData.uid;
-                        $http({ method: 'PUT', url: '/data/account_active.json', data: $scope.dataUpdate });
+                        localStorage.setItem("activeId", authData.uid);
 
                         var isUserRef = new Firebase("https://revolution-shop.firebaseio.com/users/" + authData.uid);
                         isUserRef.once("value", function(snapshot) {
-                            if (snapshot.exists()) {
+                            if (snapshot.val() != null) {
                                 console.log("Account is existed! Come on!");
+                                window.location = "youraccount.html";
                                 return;
                             }
                             else {
+                                console.log("Account is created! Congratulate!");
                                 var usersRef = ref.child("users/" + authData.uid);
                                 usersRef.set({
                                     first_name: "NEW",
@@ -248,10 +236,10 @@
                                     phone: "empty",
                                     address: "empty"
                                 });
+
+                                window.location = "youraccount.html";
                             }
                         });
-
-                        window.location = "youraccount.html";
                     }
                 });
             };
@@ -264,35 +252,30 @@
                     } else {
                         console.log("Authenticated successfully with payload:", authData);
 
-                        // ID Active
-                        //ref.update({
-                        //    active: authData.uid
-                        //});
-                        $scope.dataUpdate = { id: "" };
-                        $scope.dataUpdate.id = authData.uid;
-                        $http({ method: 'PUT', url: './data/account_active.json', data: $scope.dataUpdate });
-                        console.log($scope.dataUpdate);
+                        localStorage.setItem("activeId", authData.uid);
 
                         var isUserRef = new Firebase("https://revolution-shop.firebaseio.com/users/" + authData.uid);
                         isUserRef.once("value", function(snapshot) {
-                            if (snapshot.exists()) {
+                            if (snapshot.val() != null) {
                                 console.log("Account is existed! Come on!");
+                                window.location = "youraccount.html";
                                 return;
                             }
                             else {
+                                console.log("Account is created! Congratulate!");
                                 var usersRef = ref.child("users/" + authData.uid);
                                 usersRef.set({
                                     first_name: "NEW",
                                     last_name: "USER",
                                     email: "empty",
-                                    avatar: "",
+                                    avatar: "images/avatar.jpg",
                                     phone: "empty",
                                     address: "empty"
                                 });
+
+                                window.location = "youraccount.html";
                             }
                         });
-
-                        window.location = "youraccount.html";
                     }
                 });
             };
@@ -316,17 +299,14 @@
                     console.log("Error creating user:", error);
                     window.alert("USER IS EXISTED!");
                 } else {
-                    // ID Active
-                    ref.update({
-                        active: userData.uid
-                    });
+                    localStorage.setItem("activeId", authData.uid);
 
                     var usersRef = ref.child("users/" + userData.uid);
                     usersRef.set({
                         first_name: $scope.firstNameRegister,
                         last_name: $scope.lastNameRegister,
                         email: $scope.emailRegister,
-                        avatar: "",
+                        avatar: "images/avatar.jpg",
                         phone: "",
                         address: ""
                     });

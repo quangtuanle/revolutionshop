@@ -4,16 +4,48 @@
     app.component('productAll', {
         templateUrl: 'template/product-list.template.html',
         controller: ['$scope', '$firebaseArray', function($scope, $firebaseArray){
-            var productRef = new Firebase("https://revolution-shop.firebaseio.com/product");
-            //$scope.products = $firebaseArray(productRef);
-            productRef.on("value", function(snapshot) {
-                $scope.products = snapshot.val();
-                console.log($scope.products);
-            }, function (errorObject) {
-                console.log("The read failed: " + errorObject.code);
+            var productsArr;
+            var productHatRef           = new Firebase("https://revolution-shop.firebaseio.com/product/hat");
+            var productSandalRef        = new Firebase("https://revolution-shop.firebaseio.com/product/sandal");
+            var productLazyShoesRef     = new Firebase("https://revolution-shop.firebaseio.com/product/lazyshoes");
+            var productSportShoesRef    = new Firebase("https://revolution-shop.firebaseio.com/product/sportshoes");
+            var productSkirtRef         = new Firebase("https://revolution-shop.firebaseio.com/product/skirt");
+            var productPromDressRef     = new Firebase("https://revolution-shop.firebaseio.com/product/promdress");
+            var productSleepDressRef    = new Firebase("https://revolution-shop.firebaseio.com/product/sleepdress");
+
+            productsArr = $firebaseArray(productHatRef);
+
+            productSandalRef.on("child_added", function _add(snap, prevChild){
+                productsArr.$add(snap.val());
             });
+            productLazyShoesRef.on("child_added", function _add(snap, prevChild){
+                productsArr.$add(snap.val());
+            });
+            productSportShoesRef.on("child_added", function _add(snap, prevChild){
+                productsArr.$add(snap.val());
+            });
+            productSkirtRef.on("child_added", function _add(snap, prevChild){
+                productsArr.$add(snap.val());
+            });
+            productPromDressRef.on("child_added", function _add(snap, prevChild){
+                productsArr.$add(snap.val());
+            });
+            productSleepDressRef.on("child_added", function _add(snap, prevChild){
+                productsArr.$add(snap.val());
+            });
+
+            $scope.products = productsArr.slice();
+
+            console.log($scope.products);
         }]
     });
+
+    function toObject(arr) {
+        var rv = {};
+        for (var i = 0; i < arr.length; ++i)
+            rv[i] = arr[i];
+        return rv;
+    }
 
     // HAT COMPONENT
     app.component('hatList', {
@@ -21,6 +53,8 @@
         controller: ['$scope', '$firebaseArray', function($scope, $firebaseArray){
             var hatRef = new Firebase("https://revolution-shop.firebaseio.com/product/hat");
             $scope.products = $firebaseArray(hatRef);
+
+            console.log($scope.products);
         }]
     });
 
@@ -45,7 +79,32 @@
                     source_image_height: 1200,
                     show_hint: true,
                 });
+            });
 
+            // Animation Image Relative
+            $(window).load(function() {
+                $("#flexiselDemo1").flexisel({
+                    visibleItems: 5,
+                    animationSpeed: 1000,
+                    autoPlay: true,
+                    autoPlaySpeed: 3000,
+                    pauseOnHover: true,
+                    enableResponsiveBreakpoints: true,
+                    responsiveBreakpoints: {
+                        portrait: {
+                            changePoint:480,
+                            visibleItems: 1
+                        },
+                        landscape: {
+                            changePoint:640,
+                            visibleItems: 2
+                        },
+                        tablet: {
+                            changePoint:768,
+                            visibleItems: 3
+                        }
+                    }
+                });
             });
         }]
     });
@@ -80,7 +139,6 @@
                     source_image_height: 1200,
                     show_hint: true,
                 });
-
             });
         }]
     });
@@ -115,7 +173,6 @@
                     source_image_height: 1200,
                     show_hint: true,
                 });
-
             });
         }]
     });
@@ -185,7 +242,6 @@
                     source_image_height: 1200,
                     show_hint: true,
                 });
-
             });
         }]
     });
@@ -220,7 +276,6 @@
                     source_image_height: 1200,
                     show_hint: true,
                 });
-
             });
         }]
     });
@@ -255,7 +310,6 @@
                     source_image_height: 1200,
                     show_hint: true,
                 });
-
             });
         }]
     });

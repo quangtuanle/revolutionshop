@@ -3,7 +3,9 @@
     float: right;
     margin-top: 30px;
 }
-
+#myModal .modal-body {
+    overflow-y: visible;
+}
 .profile-avatar {
     width: 25%;
     height: 240px;

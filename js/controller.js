@@ -13,6 +13,7 @@
     ]);
 
     app.controller('RevolutionController', ['$scope', 'Auth',
+
         function($scope, Auth){
 
             $scope.auth = Auth;
@@ -28,7 +29,20 @@
             $scope.logout = function(){
                 $scope.auth.$unauth();
             }
+            $scope.watch("quantity", function () {
+                if ($scope.quantity < 0)
+                    $scope.quantity = 0;
+
+            })
+
+            $scope.testquantiy = function () {
+                if ($scope.quantity < 0)
+                    $scope.quantity = 0;
+            }
+
+
         }
+
     ]);
 
     app.controller('AccountController', ['$scope', 'Auth',

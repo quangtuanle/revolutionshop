@@ -15,7 +15,7 @@
     </div>
     <!-- grids_of_4 -->
     <div class="grid-product">
-        <div class="product-grid" dir-paginate="product in products | itemsPerPage: pageSize" current-page="currentPage">
+        <div class="product-grid" ng-animate="'animate'" class="thumbnail phone-list-item" dir-paginate="product in products | itemsPerPage: pageSize" current-page="currentPage">
             <div style="margin: 10px" class="content_box"><a href="single.html"></a>
                 <div style="height:290px" class="left-grid-view grid-view-left">
                     <img ng-src="{{product.image[0]}}" class="img-responsive watch-right" alt=""/>

@@ -6,7 +6,8 @@
         'ngRoute',
         'revolution-component',
         'infinite-scroll',
-        'angularUtils.directives.dirPagination'
+        'angularUtils.directives.dirPagination',
+        'ngAnimate'
     ]);
 
     app.config(['$locationProvider', '$routeProvider',
@@ -187,6 +188,13 @@
 
                 }
             });
+
+            //
+            //$scope.ProductInfo = {};
+            //$scope.showProduct = function($index) {
+            //    $scope.ProductIdx = $index;
+            //    $ProductInfo.name = $cart[$scope.ProductIdx].name;
+            //
 
             $scope.saveUpdateProduct = function(id, sizeUpdate, quantityUpdate) {
                 var activeId = localStorage.getItem("activeId");

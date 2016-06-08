@@ -13,8 +13,13 @@
             var productPromDressRef     = new Firebase("https://revolution-shop.firebaseio.com/product/promdress");
             var productSleepDressRef    = new Firebase("https://revolution-shop.firebaseio.com/product/sleepdress");
 
-            productsArr = $firebaseArray(productHatRef);
+            // Khởi tạo một FirebaseArray lưu trữ tất cả các sản phẩm (Tạm thời) -> Gọp xong có mảng remove nó
+            var allProductRef = new Firebase("https://revolution-shop.firebaseio.com/product/all");
+            productsArr = $firebaseArray(allProductRef);
 
+            productHatRef.on("child_added", function _add(snap, prevChild){
+                productsArr.$add(snap.val());
+            });
             productSandalRef.on("child_added", function _add(snap, prevChild){
                 productsArr.$add(snap.val());
             });
@@ -34,18 +39,20 @@
                 productsArr.$add(snap.val());
             });
 
-            $scope.products = productsArr.slice();
+            $scope.products = productsArr;
 
             console.log($scope.products);
+
+            allProductRef.remove();
+
+            $scope.currentPage = 1;
+            $scope.pageSize = 9;
+
+            $scope.pageChangeHandler = function(num) {
+                console.log('Products page changed to ' + num);
+            };
         }]
     });
-
-    function toObject(arr) {
-        var rv = {};
-        for (var i = 0; i < arr.length; ++i)
-            rv[i] = arr[i];
-        return rv;
-    }
 
     // HAT COMPONENT
     app.component('hatList', {
@@ -55,12 +62,19 @@
             $scope.products = $firebaseArray(hatRef);
 
             console.log($scope.products);
+
+            $scope.currentPage = 1;
+            $scope.pageSize = 9;
+
+            $scope.pageChangeHandler = function(num) {
+                console.log('Products page changed to ' + num);
+            };
         }]
     });
 
     app.component('hatDetail', {
         templateUrl: 'template/product-detail.template.html',
-        controller: ['$scope', '$firebaseArray', '$routeParams', function($scope, $firebaseArray, $routeParams){
+        controller: ['$scope', '$firebaseArray', '$routeParams', 'Auth', function($scope, $firebaseArray, $routeParams, Auth){
             var index = ($routeParams.hatId - 1).toString();
             var hatRefId = new Firebase("https://revolution-shop.firebaseio.com/product/hat/" + index);
             hatRefId.on("value", function(snapshot) {
@@ -69,6 +83,65 @@
             }, function (errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
+
+            // PHẦN CODE CART
+            // Select your input element.
+            var number = document.getElementById('number');
+
+            // Listen for input event on numInput.
+            number.onkeydown = function(e) {
+                if(!((e.keyCode > 95 && e.keyCode < 106)
+                    || (e.keyCode > 47 && e.keyCode < 58)
+                    || e.keyCode == 8)) {
+                    return false;
+                }
+            }
+
+            $scope.isLogin = false;
+            $scope.auth = Auth;
+
+            // any time auth status updates, add the user data to scope
+            $scope.auth.$onAuth(function(authData) {
+                $scope.authData = authData;
+                // Nếu chưa đăng nhập
+                if (!authData) {
+                    $scope.isLogin = false;
+                }
+                else {
+                    $scope.isLogin = true;
+                }
+            });
+
+            $scope.saveProductChoose = function (){
+                $scope.auth = Auth;
+
+                // any time auth status updates, add the user data to scope
+                $scope.auth.$onAuth(function(authData) {
+                    $scope.authData = authData;
+                    // Nếu chưa đăng nhập
+                    if (!authData) {
+                        return;
+                    }
+                    // Nếu đã đăng nhập
+                    else {
+                        if ($scope.quantity == 0 || $scope.quantity == null || $scope.sizeProduct == null) {
+                            window.alert("XẢY RA LỖI NHẬP! XIN MỜI THỬ LẠI");
+                            return;
+                        }
+
+                        var cartUserRef = new Firebase("https://revolution-shop.firebaseio.com/cart/" + authData.uid);
+                        cartUserRef.push({
+                            "product": $scope.product,
+                            "quantity": $scope.quantity,
+                            "size": $scope.sizeProduct,
+                            "status": false
+                        });
+                        window.alert("ĐÃ THÊM VÀO CART!");
+                    }
+                });
+            }
+
+            // ----------------------------------------------
 
             // Animation Image Object
             jQuery(document).ready(function($){
@@ -115,12 +188,19 @@
         controller: ['$scope', '$firebaseArray', function($scope, $firebaseArray){
             var skirtRef = new Firebase("https://revolution-shop.firebaseio.com/product/skirt");
             $scope.products = $firebaseArray(skirtRef);
+
+            $scope.currentPage = 1;
+            $scope.pageSize = 9;
+
+            $scope.pageChangeHandler = function(num) {
+                console.log('Products page changed to ' + num);
+            };
         }]
     });
 
     app.component('skirtDetail', {
         templateUrl: 'template/product-detail.template.html',
-        controller: ['$scope', '$firebaseArray', '$routeParams', function($scope, $firebaseArray, $routeParams){
+        controller: ['$scope', '$firebaseArray', '$routeParams', 'Auth', function($scope, $firebaseArray, $routeParams, Auth){
             var index = ($routeParams.skirtId - 1).toString();
             var skirtRefId = new Firebase("https://revolution-shop.firebaseio.com/product/skirt/" + index);
             skirtRefId.on("value", function(snapshot) {
@@ -129,6 +209,65 @@
             }, function (errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
+
+            // PHẦN CODE CART
+            // Select your input element.
+            var number = document.getElementById('number');
+
+            // Listen for input event on numInput.
+            number.onkeydown = function(e) {
+                if(!((e.keyCode > 95 && e.keyCode < 106)
+                    || (e.keyCode > 47 && e.keyCode < 58)
+                    || e.keyCode == 8)) {
+                    return false;
+                }
+            }
+
+            $scope.isLogin = false;
+            $scope.auth = Auth;
+
+            // any time auth status updates, add the user data to scope
+            $scope.auth.$onAuth(function(authData) {
+                $scope.authData = authData;
+                // Nếu chưa đăng nhập
+                if (!authData) {
+                    $scope.isLogin = false;
+                }
+                else {
+                    $scope.isLogin = true;
+                }
+            });
+
+            $scope.saveProductChoose = function (){
+                $scope.auth = Auth;
+
+                // any time auth status updates, add the user data to scope
+                $scope.auth.$onAuth(function(authData) {
+                    $scope.authData = authData;
+                    // Nếu chưa đăng nhập
+                    if (!authData) {
+                        return;
+                    }
+                    // Nếu đã đăng nhập
+                    else {
+                        if ($scope.quantity == 0 || $scope.quantity == null || $scope.sizeProduct == null) {
+                            window.alert("XẢY RA LỖI NHẬP! XIN MỜI THỬ LẠI");
+                            return;
+                        }
+
+                        var cartUserRef = new Firebase("https://revolution-shop.firebaseio.com/cart/" + authData.uid);
+                        cartUserRef.push({
+                            "product": $scope.product,
+                            "quantity": $scope.quantity,
+                            "size": $scope.sizeProduct,
+                            "status": false
+                        });
+                        window.alert("ĐÃ THÊM VÀO CART!");
+                    }
+                });
+            }
+
+            // ----------------------------------------------
 
             // Animation Image Object
             jQuery(document).ready(function($){
@@ -149,12 +288,19 @@
         controller: ['$scope', '$firebaseArray', function($scope, $firebaseArray){
             var sleepdressRef = new Firebase("https://revolution-shop.firebaseio.com/product/sleepdress");
             $scope.products = $firebaseArray(sleepdressRef);
+
+            $scope.currentPage = 1;
+            $scope.pageSize = 9;
+
+            $scope.pageChangeHandler = function(num) {
+                console.log('Products page changed to ' + num);
+            };
         }]
     });
 
     app.component('sleepdressDetail', {
         templateUrl: 'template/product-detail.template.html',
-        controller: ['$scope', '$firebaseArray', '$routeParams', function($scope, $firebaseArray, $routeParams){
+        controller: ['$scope', '$firebaseArray', '$routeParams', 'Auth', function($scope, $firebaseArray, $routeParams, Auth){
             var index = ($routeParams.sleepdressId - 1).toString();
             var sleepdressRefId = new Firebase("https://revolution-shop.firebaseio.com/product/sleepdress/" + index);
             sleepdressRefId.on("value", function(snapshot) {
@@ -163,6 +309,65 @@
             }, function (errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
+
+            // PHẦN CODE CART
+            // Select your input element.
+            var number = document.getElementById('number');
+
+            // Listen for input event on numInput.
+            number.onkeydown = function(e) {
+                if(!((e.keyCode > 95 && e.keyCode < 106)
+                    || (e.keyCode > 47 && e.keyCode < 58)
+                    || e.keyCode == 8)) {
+                    return false;
+                }
+            }
+
+            $scope.isLogin = false;
+            $scope.auth = Auth;
+
+            // any time auth status updates, add the user data to scope
+            $scope.auth.$onAuth(function(authData) {
+                $scope.authData = authData;
+                // Nếu chưa đăng nhập
+                if (!authData) {
+                    $scope.isLogin = false;
+                }
+                else {
+                    $scope.isLogin = true;
+                }
+            });
+
+            $scope.saveProductChoose = function (){
+                $scope.auth = Auth;
+
+                // any time auth status updates, add the user data to scope
+                $scope.auth.$onAuth(function(authData) {
+                    $scope.authData = authData;
+                    // Nếu chưa đăng nhập
+                    if (!authData) {
+                        return;
+                    }
+                    // Nếu đã đăng nhập
+                    else {
+                        if ($scope.quantity == 0 || $scope.quantity == null || $scope.sizeProduct == null) {
+                            window.alert("XẢY RA LỖI NHẬP! XIN MỜI THỬ LẠI");
+                            return;
+                        }
+
+                        var cartUserRef = new Firebase("https://revolution-shop.firebaseio.com/cart/" + authData.uid);
+                        cartUserRef.push({
+                            "product": $scope.product,
+                            "quantity": $scope.quantity,
+                            "size": $scope.sizeProduct,
+                            "status": false
+                        });
+                        window.alert("ĐÃ THÊM VÀO CART!");
+                    }
+                });
+            }
+
+            // ----------------------------------------------
 
             // Animation Image Object
             jQuery(document).ready(function($){
@@ -183,12 +388,19 @@
         controller: ['$scope', '$firebaseArray', function($scope, $firebaseArray){
             var promdressRef = new Firebase("https://revolution-shop.firebaseio.com/product/promdress");
             $scope.products = $firebaseArray(promdressRef);
+
+            $scope.currentPage = 1;
+            $scope.pageSize = 9;
+
+            $scope.pageChangeHandler = function(num) {
+                console.log('Products page changed to ' + num);
+            };
         }]
     });
 
     app.component('promdressDetail', {
         templateUrl: 'template/product-detail.template.html',
-        controller: ['$scope', '$firebaseArray', '$routeParams', function($scope, $firebaseArray, $routeParams){
+        controller: ['$scope', '$firebaseArray', '$routeParams', 'Auth', function($scope, $firebaseArray, $routeParams, Auth){
             var index = ($routeParams.promdressId - 1).toString();
             var promdressRefId = new Firebase("https://revolution-shop.firebaseio.com/product/promdress/" + index);
             promdressRefId.on("value", function(snapshot) {
@@ -197,6 +409,65 @@
             }, function (errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
+
+            // PHẦN CODE CART
+            // Select your input element.
+            var number = document.getElementById('number');
+
+            // Listen for input event on numInput.
+            number.onkeydown = function(e) {
+                if(!((e.keyCode > 95 && e.keyCode < 106)
+                    || (e.keyCode > 47 && e.keyCode < 58)
+                    || e.keyCode == 8)) {
+                    return false;
+                }
+            }
+
+            $scope.isLogin = false;
+            $scope.auth = Auth;
+
+            // any time auth status updates, add the user data to scope
+            $scope.auth.$onAuth(function(authData) {
+                $scope.authData = authData;
+                // Nếu chưa đăng nhập
+                if (!authData) {
+                    $scope.isLogin = false;
+                }
+                else {
+                    $scope.isLogin = true;
+                }
+            });
+
+            $scope.saveProductChoose = function (){
+                $scope.auth = Auth;
+
+                // any time auth status updates, add the user data to scope
+                $scope.auth.$onAuth(function(authData) {
+                    $scope.authData = authData;
+                    // Nếu chưa đăng nhập
+                    if (!authData) {
+                        return;
+                    }
+                    // Nếu đã đăng nhập
+                    else {
+                        if ($scope.quantity == 0 || $scope.quantity == null || $scope.sizeProduct == null) {
+                            window.alert("XẢY RA LỖI NHẬP! XIN MỜI THỬ LẠI");
+                            return;
+                        }
+
+                        var cartUserRef = new Firebase("https://revolution-shop.firebaseio.com/cart/" + authData.uid);
+                        cartUserRef.push({
+                            "product": $scope.product,
+                            "quantity": $scope.quantity,
+                            "size": $scope.sizeProduct,
+                            "status": false
+                        });
+                        window.alert("ĐÃ THÊM VÀO CART!");
+                    }
+                });
+            }
+
+            // ----------------------------------------------
 
             // Animation Image Object
             jQuery(document).ready(function($){
@@ -218,12 +489,19 @@
         controller: ['$scope', '$firebaseArray', function($scope, $firebaseArray){
             var sandalRef = new Firebase("https://revolution-shop.firebaseio.com/product/sandal");
             $scope.products = $firebaseArray(sandalRef);
+
+            $scope.currentPage = 1;
+            $scope.pageSize = 9;
+
+            $scope.pageChangeHandler = function(num) {
+                console.log('Products page changed to ' + num);
+            };
         }]
     });
 
     app.component('sandalDetail', {
         templateUrl: 'template/product-detail.template.html',
-        controller: ['$scope', '$firebaseArray', '$routeParams', function($scope, $firebaseArray, $routeParams){
+        controller: ['$scope', '$firebaseArray', '$routeParams', 'Auth', function($scope, $firebaseArray, $routeParams, Auth){
             var index = ($routeParams.sandalId - 1).toString();
             var sandalRefId = new Firebase("https://revolution-shop.firebaseio.com/product/sandal/" + index);
             sandalRefId.on("value", function(snapshot) {
@@ -232,6 +510,65 @@
             }, function (errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
+
+            // PHẦN CODE CART
+            // Select your input element.
+            var number = document.getElementById('number');
+
+            // Listen for input event on numInput.
+            number.onkeydown = function(e) {
+                if(!((e.keyCode > 95 && e.keyCode < 106)
+                    || (e.keyCode > 47 && e.keyCode < 58)
+                    || e.keyCode == 8)) {
+                    return false;
+                }
+            }
+
+            $scope.isLogin = false;
+            $scope.auth = Auth;
+
+            // any time auth status updates, add the user data to scope
+            $scope.auth.$onAuth(function(authData) {
+                $scope.authData = authData;
+                // Nếu chưa đăng nhập
+                if (!authData) {
+                    $scope.isLogin = false;
+                }
+                else {
+                    $scope.isLogin = true;
+                }
+            });
+
+            $scope.saveProductChoose = function (){
+                $scope.auth = Auth;
+
+                // any time auth status updates, add the user data to scope
+                $scope.auth.$onAuth(function(authData) {
+                    $scope.authData = authData;
+                    // Nếu chưa đăng nhập
+                    if (!authData) {
+                        return;
+                    }
+                    // Nếu đã đăng nhập
+                    else {
+                        if ($scope.quantity == 0 || $scope.quantity == null || $scope.sizeProduct == null) {
+                            window.alert("XẢY RA LỖI NHẬP! XIN MỜI THỬ LẠI");
+                            return;
+                        }
+
+                        var cartUserRef = new Firebase("https://revolution-shop.firebaseio.com/cart/" + authData.uid);
+                        cartUserRef.push({
+                            "product": $scope.product,
+                            "quantity": $scope.quantity,
+                            "size": $scope.sizeProduct,
+                            "status": false
+                        });
+                        window.alert("ĐÃ THÊM VÀO CART!");
+                    }
+                });
+            }
+
+            // ----------------------------------------------
 
             // Animation Image Object
             jQuery(document).ready(function($){
@@ -252,12 +589,19 @@
         controller: ['$scope', '$firebaseArray', function($scope, $firebaseArray){
             var lazyshoesRef = new Firebase("https://revolution-shop.firebaseio.com/product/lazyshoes");
             $scope.products = $firebaseArray(lazyshoesRef);
+
+            $scope.currentPage = 1;
+            $scope.pageSize = 9;
+
+            $scope.pageChangeHandler = function(num) {
+                console.log('Products page changed to ' + num);
+            };
         }]
     });
 
     app.component('lazyshoesDetail', {
         templateUrl: 'template/product-detail.template.html',
-        controller: ['$scope', '$firebaseArray', '$routeParams', function($scope, $firebaseArray, $routeParams){
+        controller: ['$scope', '$firebaseArray', '$routeParams', 'Auth', function($scope, $firebaseArray, $routeParams, Auth){
             var index = ($routeParams.lazyshoesId - 1).toString();
             var lazyshoesRefId = new Firebase("https://revolution-shop.firebaseio.com/product/lazyshoes/" + index);
             lazyshoesRefId.on("value", function(snapshot) {
@@ -266,6 +610,65 @@
             }, function (errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
+
+            // PHẦN CODE CART
+            // Select your input element.
+            var number = document.getElementById('number');
+
+            // Listen for input event on numInput.
+            number.onkeydown = function(e) {
+                if(!((e.keyCode > 95 && e.keyCode < 106)
+                    || (e.keyCode > 47 && e.keyCode < 58)
+                    || e.keyCode == 8)) {
+                    return false;
+                }
+            }
+
+            $scope.isLogin = false;
+            $scope.auth = Auth;
+
+            // any time auth status updates, add the user data to scope
+            $scope.auth.$onAuth(function(authData) {
+                $scope.authData = authData;
+                // Nếu chưa đăng nhập
+                if (!authData) {
+                    $scope.isLogin = false;
+                }
+                else {
+                    $scope.isLogin = true;
+                }
+            });
+
+            $scope.saveProductChoose = function (){
+                $scope.auth = Auth;
+
+                // any time auth status updates, add the user data to scope
+                $scope.auth.$onAuth(function(authData) {
+                    $scope.authData = authData;
+                    // Nếu chưa đăng nhập
+                    if (!authData) {
+                        return;
+                    }
+                    // Nếu đã đăng nhập
+                    else {
+                        if ($scope.quantity == 0 || $scope.quantity == null || $scope.sizeProduct == null) {
+                            window.alert("XẢY RA LỖI NHẬP! XIN MỜI THỬ LẠI");
+                            return;
+                        }
+
+                        var cartUserRef = new Firebase("https://revolution-shop.firebaseio.com/cart/" + authData.uid);
+                        cartUserRef.push({
+                            "product": $scope.product,
+                            "quantity": $scope.quantity,
+                            "size": $scope.sizeProduct,
+                            "status": false
+                        });
+                        window.alert("ĐÃ THÊM VÀO CART!");
+                    }
+                });
+            }
+
+            // ----------------------------------------------
 
             // Animation Image Object
             jQuery(document).ready(function($){
@@ -286,12 +689,19 @@
         controller: ['$scope', '$firebaseArray', function($scope, $firebaseArray){
             var sportshoesRef = new Firebase("https://revolution-shop.firebaseio.com/product/sportshoes");
             $scope.products = $firebaseArray(sportshoesRef);
+
+            $scope.currentPage = 1;
+            $scope.pageSize = 9;
+
+            $scope.pageChangeHandler = function(num) {
+                console.log('Products page changed to ' + num);
+            };
         }]
     });
 
     app.component('sportshoesDetail', {
         templateUrl: 'template/product-detail.template.html',
-        controller: ['$scope', '$firebaseArray', '$routeParams', function($scope, $firebaseArray, $routeParams){
+        controller: ['$scope', '$firebaseArray', '$routeParams', 'Auth', function($scope, $firebaseArray, $routeParams, Auth){
             var index = ($routeParams.sportshoesId - 1).toString();
             var sportshoesRefId = new Firebase("https://revolution-shop.firebaseio.com/product/sportshoes/" + index);
             sportshoesRefId.on("value", function(snapshot) {
@@ -300,6 +710,65 @@
             }, function (errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
+
+            // PHẦN CODE CART
+            // Select your input element.
+            var number = document.getElementById('number');
+
+            // Listen for input event on numInput.
+            number.onkeydown = function(e) {
+                if(!((e.keyCode > 95 && e.keyCode < 106)
+                    || (e.keyCode > 47 && e.keyCode < 58)
+                    || e.keyCode == 8)) {
+                    return false;
+                }
+            }
+
+            $scope.isLogin = false;
+            $scope.auth = Auth;
+
+            // any time auth status updates, add the user data to scope
+            $scope.auth.$onAuth(function(authData) {
+                $scope.authData = authData;
+                // Nếu chưa đăng nhập
+                if (!authData) {
+                    $scope.isLogin = false;
+                }
+                else {
+                    $scope.isLogin = true;
+                }
+            });
+
+            $scope.saveProductChoose = function (){
+                $scope.auth = Auth;
+
+                // any time auth status updates, add the user data to scope
+                $scope.auth.$onAuth(function(authData) {
+                    $scope.authData = authData;
+                    // Nếu chưa đăng nhập
+                    if (!authData) {
+                        return;
+                    }
+                    // Nếu đã đăng nhập
+                    else {
+                        if ($scope.quantity == 0 || $scope.quantity == null || $scope.sizeProduct == null) {
+                            window.alert("XẢY RA LỖI NHẬP! XIN MỜI THỬ LẠI");
+                            return;
+                        }
+
+                        var cartUserRef = new Firebase("https://revolution-shop.firebaseio.com/cart/" + authData.uid);
+                        cartUserRef.push({
+                            "product": $scope.product,
+                            "quantity": $scope.quantity,
+                            "size": $scope.sizeProduct,
+                            "status": false
+                        });
+                        window.alert("ĐÃ THÊM VÀO CART!");
+                    }
+                });
+            }
+
+            // ----------------------------------------------
 
             // Animation Image Object
             jQuery(document).ready(function($){

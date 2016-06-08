@@ -16,14 +16,16 @@
 
 .profile-info {
     height: 240px;
-    width:  75%;
-    margin-left: 20px;
+    width:  90%;
+    margin-left: 50px;
 }
 
 .profile-info-content {
     float: left;
-    padding: 30px 40px 20px 40px;
-    margin-left: 20px;
+    padding-left: 20px;
+    padding-top: 20px;
+    margin-left: 40px;
+    width: 70%;
 }
 
 #profile-contact {
@@ -74,17 +76,60 @@
 
 .product-info {
     height: 240px;
-    width:  75%;
-    margin-left: 20px;
+    width:  90%;
+    margin-left: 50px;
 }
 
 .product-info-content {
     float: left;
-    padding: 0px 40px 20px 40px;
-    margin-left: 20px;
+    padding-left: 20px;
+    margin-left: 40px;
+    width: 70%;
 }
 
 .button-cart {
     margin-top: 20px;
 }
 
+/* Styles go here */
+
+.my-controller {
+    border: 1px solid #fcc;
+    padding: 5px;
+    margin: 3px;
+}
+.my-controller small {
+    color: #c99;
+}
+.other-controller {
+    border: 1px solid #ccf;
+    padding: 5px;
+    margin: 3px;
+}
+.other-controller small {
+    color: #99c;
+}
+.third-controller {
+    border: 1px solid #cfc;
+    padding: 5px;
+    margin: 3px;
+}
+.third-controller small {
+    color: #9c9;
+}
+
+.btn-change-avatar {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    background-color: #00BFF0; /* Green */
+    color: white;
+    transition-duration: 0.4s;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-bottom: 5px;
+    border: none;
+}
+
+.btn-change-avatar:hover {
+    background-color: #dff0d8; /* Green */
+    color: white;
+    border: none;
+}

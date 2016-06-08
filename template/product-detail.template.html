@@ -4,21 +4,21 @@
             <ul id="etalage">
                 <li>
                     <a href="#">
-                        <img class="etalage_thumb_image" src="images/s4.jpg" class="img-responsive" />
-                        <img class="etalage_source_image" src="images/si4.jpg" class="img-responsive" title="" />
+                        <img class="etalage_thumb_image" ng-src="{{ product.image[0] }}" class="img-responsive" />
+                        <img class="etalage_source_image" ng-src="{{ product.image[0] }}" class="img-responsive" title="" />
                     </a>
                 </li>
                 <li>
-                    <img class="etalage_thumb_image" src="images/s2.jpg" class="img-responsive" />
-                    <img class="etalage_source_image" src="images/si2.jpg" class="img-responsive" title="" />
+                    <img class="etalage_thumb_image" ng-src="{{ product.image[1] }}" class="img-responsive" />
+                    <img class="etalage_source_image" ng-src="{{ product.image[1] }}" class="img-responsive" title="" />
                 </li>
                 <li>
-                    <img class="etalage_thumb_image" src="images/s3.jpg" class="img-responsive"  />
-                    <img class="etalage_source_image" src="images/si3.jpg"class="img-responsive"  />
+                    <img class="etalage_thumb_image" ng-src="{{ product.image[0] }}" class="img-responsive"  />
+                    <img class="etalage_source_image" ng-src="{{ product.image[0] }}"class="img-responsive"  />
                 </li>
                 <li>
-                    <img class="etalage_thumb_image" src="images/s1.jpg" class="img-responsive"  />
-                    <img class="etalage_source_image" src="images/si1.jpg"class="img-responsive"  />
+                    <img class="etalage_thumb_image" ng-src="{{ product.image[1] }}" class="img-responsive"  />
+                    <img class="etalage_source_image" ng-src="{{ product.image[1] }}"class="img-responsive"  />
                 </li>
             </ul>
             <div class="clearfix"> </div>
@@ -39,21 +39,19 @@
                                 <h4 class="modal-title">Add to cart</h4>
                             </div>
                             <div class="modal-body">
-                                <table style="font-family: 'Helvetica Neue';font-size: 20px">
+                                <form ng-show="isLogin" style="font-family: 'Helvetica Neue';font-size: 20px">
                                     <tr>
-                                        <td width="100px"><span>Số lượng</span></td>
-                                        <td><input ng-change="testquantity()" type="number" style="width: 100px" ng-model="quantity" min="0" max="99" required/></td>
+                                        <td>Tên sản phẩm</td>
+                                        <td>{{ product.name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td width="20px"><span>Số lượng</span></td>
+                                        <td><input type="number" id="number" value="1" style="width: 100px" ng-model="quantity" min="1" max="1000" required/></td>
                                     </tr>
                                     <tr>
                                         <td><span>Size</span></td>
                                         <td height="60px">
-                                            <select style="width: 100px">
-                                                <option value="S">S</option>
-                                                <option value="M">M</option>
-                                                <option value="L">L</option>
-                                                <option value="XL">XL</option>
-                                                <option value="XXL">XXL</option>
-                                            </select>
+                                            <input type="text" id="sizeProduct" ng-model="sizeProduct" style="width: 100px" required/>
                                         </td>
                                     </tr>
 
@@ -61,13 +59,22 @@
                                         <td><span>Màu</span></td>
                                         <td><input style="width: 100px" type="color" name="favcolor" value="#ff0000"></td>
                                     </tr>
-                                </table>
-                                <div style="float: right">
-                                    <span>Thành tiền</span>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+                                    <tr>
+                                        <td ng-show="checkProductChoose">VUI LÒNG KIỂM TRA LẠI DỮ LIỆU!</td>
+                                    </tr>
+                                    <div style="float: right">
+                                        <span>Thành tiền {{product.cost * quantity | currency }}</span>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="saveProductChoose()">Save</button>
+                                    </div>
+                                </form>
+                                <form ng-show="!isLogin" style="font-family: 'Helvetica Neue';font-size: 20px">
+                                    <h1>Vui lòng đăng nhập để thực hiện chức năng!</h1>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="#">CLOSE</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

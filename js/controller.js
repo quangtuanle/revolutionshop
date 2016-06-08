@@ -4,7 +4,9 @@
         'firebase',
         'xeditable',
         'ngRoute',
-        'revolution-component'
+        'revolution-component',
+        'infinite-scroll',
+        'angularUtils.directives.dirPagination'
     ]);
 
     app.config(['$locationProvider', '$routeProvider',
@@ -147,43 +149,101 @@
             }, function (errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
+
+            $scope.saveUpdateInfo = function() {
+                var refUserActive = new Firebase("https://revolution-shop.firebaseio.com/users/" + localStorage.getItem("activeId"));
+                refUserActive.update({
+                    first_name: $scope.dataUser.first_name,
+                    last_name: $scope.dataUser.last_name,
+                    phone: $scope.dataUser.phone,
+                    email: $scope.dataUser.email,
+                    address: $scope.dataUser.address
+                });
+            }
         }
     ]);
 
     app.controller('ProductController', ["$scope", "$firebaseArray",
         function($scope, $firebaseArray){
-            var productHatRef           = new Firebase("https://revolution-shop.firebaseio.com/product/hat");
-            var productSandalRef        = new Firebase("https://revolution-shop.firebaseio.com/product/sandal");
-            var productLazyShoesRef     = new Firebase("https://revolution-shop.firebaseio.com/product/lazyshoes");
-            var productSportShoesRef    = new Firebase("https://revolution-shop.firebaseio.com/product/sportshoes");
-            var productSkirtRef         = new Firebase("https://revolution-shop.firebaseio.com/product/skirt");
-            var productPromDressRef     = new Firebase("https://revolution-shop.firebaseio.com/product/promdress");
-            var productSleepDressRef    = new Firebase("https://revolution-shop.firebaseio.com/product/sleepdress");
 
-            $scope.products     = [];
-            $scope.hats         = $firebaseArray(productHatRef);
-            $scope.sandals      = $firebaseArray(productSandalRef);
-            $scope.lazyshoeses  = $firebaseArray(productLazyShoesRef);
-            $scope.sportshoeses = $firebaseArray(productSportShoesRef);
-            $scope.skirts       = $firebaseArray(productSkirtRef);
-            $scope.promdresses  = $firebaseArray(productPromDressRef);
-            $scope.sleepdresses = $firebaseArray(productSleepDressRef);
-
-            console.log($scope.hats);
-
-            $scope.products.push($scope.hats);
-            $scope.products.push($scope.sandals);
-            $scope.products.push($scope.lazyshoeses);
-            $scope.products.push($scope.sportshoeses);
-            $scope.products.push($scope.skirts);
-            $scope.products.push($scope.promdresses);
-            $scope.products.push($scope.sleepdresses);
         }
     ]);
 
-    app.controller('CartController', function(){
+    app.controller('CartController', ['$scope', 'Auth', '$firebaseArray',
+        function($scope, Auth, $firebaseArray) {
+            $scope.auth = Auth;
 
-    });
+            // any time auth status updates, add the user data to scope
+            $scope.auth.$onAuth(function(authData) {
+                $scope.authData = authData;
+                if (!authData) {
+                    window.location = "login.html";
+                    return;
+                }
+                else {
+                    console.log("CART!!");
+                    var cartUserRef = new Firebase("https://revolution-shop.firebaseio.com/cart/" + authData.uid);
+                    $scope.carts = $firebaseArray(cartUserRef);
+
+                }
+            });
+
+            $scope.saveUpdateProduct = function(id, sizeUpdate, quantityUpdate) {
+                var activeId = localStorage.getItem("activeId");
+                var cartUserRef = new Firebase("https://revolution-shop.firebaseio.com/cart/" + activeId + "/" + id);
+                if (sizeUpdate == 0 || sizeUpdate == null || quantityUpdate == 0 || quantityUpdate == null){
+                    window.alert("DỮ LIỆU SỬA ĐỔI KHÔNG PHÙ HỢP!");
+                    return;
+                }
+                cartUserRef.update({ size: sizeUpdate, quantity: quantityUpdate  });
+            };
+
+            $scope.buy = function (id, cartProduct, cartSize, cartQuantity) {
+                var activeId = localStorage.getItem("activeId");
+                var cartUserRef = new Firebase("https://revolution-shop.firebaseio.com/cart/" + activeId + "/" + id);
+                cartUserRef.update({ status: true  });
+
+                var systemRef = new Firebase("https://revolution-shop.firebaseio.com/client/" + activeId + "/cart");
+                systemRef.push({
+                    product: cartProduct,
+                    quantity: cartSize,
+                    size: cartQuantity,
+                    status: false
+                });
+
+                window.alert("CẢM ƠN QUÝ KHÁCH ĐÃ MUA HÀNG! XIN VUI LÒNG ĐỢI NHÂN VIÊN TÔI KIỂM TRA XÁC NHẬN VÀ SẼ GỬI SẢN PHẨM THEO YÊU CẦU!");
+            };
+
+            $scope.allbuy = function (carts) {
+                console.log(carts);
+                carts.$loaded().then(function(data) {
+                    console.log('Initial data loaded', data.length);
+
+                    if (data.length == 0) {
+                        window.alert("VUI LÒNG RA QUẦY CHỌN HÀNG!");
+                    }
+
+                    for (var i = 0; i < data.length; i++) {
+                        if (!data[i].status) {
+                            var activeId = localStorage.getItem("activeId");
+                            var cartUserRef = new Firebase("https://revolution-shop.firebaseio.com/cart/" + activeId + "/" + data[i].$id);
+                            cartUserRef.update({ status: true  });
+
+                            var systemRef = new Firebase("https://revolution-shop.firebaseio.com/client/" + data[i].$id + "/cart");
+                            systemRef.push({
+                                product: data[i].product,
+                                quantity: data[i].quantity,
+                                size: data[i].size,
+                                status: false
+                            });
+                        }
+                    }
+                });
+
+                window.alert("CẢM ƠN QUÝ KHÁCH ĐÃ MUA HÀNG! XIN VUI LÒNG ĐỢI NHÂN VIÊN TÔI KIỂM TRA XÁC NHẬN VÀ SẼ GỬI SẢN PHẨM THEO YÊU CẦU!");
+            }
+        }
+    ]);
 
     app.controller('LoginController', ['$scope', '$http',
         function($scope, $http) {

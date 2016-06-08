@@ -206,8 +206,8 @@
                 var systemRef = new Firebase("https://revolution-shop.firebaseio.com/client/" + activeId + "/cart");
                 systemRef.push({
                     product: cartProduct,
-                    quantity: cartSize,
-                    size: cartQuantity,
+                    quantity: cartQuantity,
+                    size: cartSize,
                     status: false
                 });
 
@@ -342,39 +342,43 @@
         }
     ]);
 
-    app.controller('RegisterController', function($scope){
-        this.register = function(){
-            if ($scope.passwordRegister !== $scope.rePasswordRegister){
-                console.log('Password is not duplicated');
-                window.alert("PASSWORD IS NOT DUPLICATED!");
-                return;
-            }
-
-            var ref = new Firebase("https://revolution-shop.firebaseio.com");
-            ref.createUser({
-                email    : $scope.emailRegister,
-                password : $scope.passwordRegister
-            }, function(error, userData) {
-                if (error) {
-                    console.log("Error creating user:", error);
-                    window.alert("USER IS EXISTED!");
-                } else {
-                    localStorage.setItem("activeId", authData.uid);
-
-                    var usersRef = ref.child("users/" + userData.uid);
-                    usersRef.set({
-                        first_name: $scope.firstNameRegister,
-                        last_name: $scope.lastNameRegister,
-                        email: $scope.emailRegister,
-                        avatar: "images/avatar.jpg",
-                        phone: "",
-                        address: ""
-                    });
-                    console.log("Successfully created user account with uid:", userData.uid);
-                    window.location = "youraccount.html";
+    app.controller('RegisterController', ['$scope',
+        function($scope){
+            this.register = function(){
+                if ($scope.passwordRegister !== $scope.rePasswordRegister){
+                    console.log('Password is not duplicated');
+                    window.alert("PASSWORD IS NOT DUPLICATED!");
+                    return;
                 }
-            });
-        };
-    });
+
+                var ref = new Firebase("https://revolution-shop.firebaseio.com");
+                ref.createUser({
+                    email    : $scope.emailRegister,
+                    password : $scope.passwordRegister
+                }, function(error, userData) {
+                    if (error) {
+                        console.log("Error creating user:", error);
+                        window.alert("USER IS EXISTED!");
+                        console.log($scope.emailRegister);
+                    } else {
+                        localStorage.setItem("activeId", userData.uid);
+                        console.log(localStorage.getItem("activeId"));
+
+                        var usersRef = ref.child("users/" + userData.uid);
+                        usersRef.set({
+                            first_name: $scope.firstNameRegister,
+                            last_name: $scope.lastNameRegister,
+                            email: $scope.emailRegister,
+                            avatar: "images/avatar.jpg",
+                            phone: "",
+                            address: ""
+                        });
+                        console.log("Successfully created user account with uid:", userData.uid);
+                        window.location = "login.html";
+                    }
+                });
+            };
+        }
+    ]);
 
 })();

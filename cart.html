@@ -14,8 +14,8 @@
     <!--fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
     <!--//fonts-->
-    <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
     <script type="text/javascript" src="js/xeditable.min.js"></script>
     <script type="text/javascript" src="js/firebase.js"></script>
     <script type="text/javascript" src="js/angular-route.js"></script>
@@ -25,6 +25,13 @@
     <script type="text/javascript" src="js/components.js"></script>
     <script type="text/javascript" src="js/jquery.flexisel.js"></script>
     <script src="js/jquery.etalage.min.js"></script>
+    <script type="text/javascript" src="js/ng-infinite-scroll.min.js"></script>
+    <script type="text/javascript" src="js/dirPagination.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+    <!--Add thu vien-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body ng-controller="RevolutionController">
 <!--header-->
@@ -33,61 +40,139 @@
 <div class="container">
 
     <div class="cart_grid" ng-controller="CartController as cartCtrl">
-        <div class="cart-product">
-            <div class="product-img">
+        <div style="margin: 30px; margin-top: 0px;">
+            <h2>CÁC SẢN PHẨM ĐÃ CHỌN</h2>
+        </div>
+        <div class="cart-product" ng-repeat="cart in carts">
+            <div class="product-img" ng-show="!cart.status">
                 <img class="img-product" width="240px" height="240px"
-                     src="images/avatar.jpg" />
+                     ng-src="{{ cart.product.image[0] }}" />
             </div>
-            <div class="product-info">
+            <div class="product-info" ng-show="!cart.status">
                 <ul class="product-info-content">
-                    <h3 class="restyle" editable-text="data[0].name"><b>{{ data[0].name }}</b></h3>
-                    <h4 class="restyle" editable-text="data[0].id">{{ data[0].id }}</h4>
+                    <!-- THAY ĐỔI -->
+                    <a class="now-get get-cart-in" ng-click="showProduct($index)" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pencil size"></span></a>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                             MODAL
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">{{ cart.product.name }}</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form style="font-family: 'Helvetica Neue';font-size: 20px" name="cartProductForm">
+                                        <tr>
+                                            <td width="20px"><span>Số lượng</span></td>
+                                            <td><input type="number" id="number" value="1" style="width: 100px" ng-model="cart.quantity" min="1" max="1000" required/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>Size</span></td>
+                                            <td height="60px">
+                                                <input ng-model="cart.size" type="text" id="sizeProduct" ng-model="sizeProduct" style="width: 100px" required/>
+                                            </td>
+                                        </tr>
+                                        <div style="float: right">
+                                            <span>Thành tiền {{ cart.product.cost * cart.quantity | currency }}</span>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button ng-click="saveUpdateProduct(cart.$id, cart.size, cart.quantity)" type="submit" class="btn btn-default" data-dismiss="modal">Save</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- -->
+                    <h3 class="restyle"><b>{{ cart.product.name | limitTo:60 }}</b></h3>
+                    <p class="restyle">{{ cart.product.info[0] | limitTo:60  }}</p>
                     <table>
                         <tbody>
                         <tr>
-                            <td class="alignTable" >Size</td>
-                            <td><span editable-text="data[0].size">{{ data[0].size }}</span></td>
+                            <td class="alignTable">Size</td>
+                            <td ><span ><h4 style="margin-left: 50px;">{{ cart.size }}</h4></span></td>
                         </tr>
                         <tr>
-                            <td class="alignTable" >Quantity</td>
-                            <td><span editable-text="data[0].quantity">{{ data[0].quantity }}</span></td>
+                            <td class="alignTable">Quantity</td>
+                            <td ><span ><h4  style="margin-left: 50px;">{{ cart.quantity }}</h4></span></td>
                         </tr>
                         <tr>
-                            <td class="alignTable" >Cost</td>
-                            <td><span editable-text="data[0].cost">{{ data[0].cost }}</span></td>
+                            <td class="alignTable">Cost</td>
+                            <td ><span><h4 style="margin-left: 50px;">{{ cart.product.cost * cart.quantity }}</h4></span></td>
                         </tr>
                         </tbody>
                     </table>
-                    <input class="button-cart" type="button" value="MUA NGAY" />
+                    <a class="now-get get-cart-in" style="background-color: #00BFF0" ng-click="buy(cart.$id, cart.product, cart.size, cart.quantity)">MUA NGAY</a>
                 </ul>
             </div>
         </div>
-        <div class="cart-product">
-            <div class="product-img">
-                <img class="img-product" width="240px" height="240px"
-                     src="images/avatar.jpg" />
+        <!-- Modal -->
+        <!--<div class="modal fade" id="myModal" role="dialog">-->
+            <!--<div class="modal-dialog">-->
+                <!--&lt;!&ndash; MODAL &ndash;&gt;-->
+                <!--<div class="modal-content">-->
+                    <!--<div class="modal-header">-->
+                        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                        <!--<h4 class="modal-title">{{ ProductInfo.name }}</h4>-->
+                    <!--</div>-->
+                    <!--<div class="modal-body">-->
+                        <!--<form style="font-family: 'Helvetica Neue';font-size: 20px" name="cartProductForm">-->
+                            <!--<tr>-->
+                                <!--<td width="20px"><span>Số lượng</span>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <!--<input type="number" id="number" value="1" style="width: 100px" ng-model="cart.quantity" min="1" max="1000" required/>-->
+                                <!--</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td><span>Size</span>-->
+                                <!--</td>-->
+                                <!--<td height="60px">-->
+                                    <!--<input ng-model="cart.size" type="text" id="sizeProduct" ng-model="sizeProduct" style="width: 100px" required/>-->
+                                <!--</td>-->
+                            <!--</tr>-->
+                            <!--<div style="float: right"> <span>Thành tiền {{ ProductInfo.cost * cart.quantity | currency }}</span>-->
+                            <!--</div>-->
+                            <!--<div class="modal-footer">-->
+                                <!--<button ng-click="saveUpdateProduct(cart.$id, cart.size, cart.quantity)" type="submit" class="btn btn-default" data-dismiss="modal">Save</button>-->
+                            <!--</div>-->
+                        <!--</form>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div style="margin: 30px">
+            <div>
+                <a class="now-get get-cart-in" ng-click="allbuy(carts)">MUA TẤT CẢ</a>
             </div>
-            <div class="product-info">
+            <h2>CÁC SẢN PHẨM ĐÃ XÁC NHẬN MUA</h2>
+        </div>
+        <div class="cart-product" ng-repeat="cart in carts">
+            <div class="product-img" ng-show="cart.status">
+                <img class="img-product" width="240px" height="240px"
+                     ng-src="{{ cart.product.image[0] }}" />
+            </div>
+            <div class="product-info" ng-show="cart.status">
                 <ul class="product-info-content">
-                    <h3 class="restyle" editable-text="data[0].name"><b>{{ data[0].name }}</b></h3>
-                    <h4 class="restyle" editable-text="data[0].id">{{ data[0].id }}</h4>
+                    <h3 class="restyle"><b>{{ cart.product.name | limitTo:60  }}</b></h3>
+                    <p class="restyle">{{ cart.product.info[0] | limitTo:60  }}</p>
                     <table>
                         <tbody>
                         <tr>
                             <td class="alignTable" >Size</td>
-                            <td><span editable-text="data[0].size">{{ data[0].size }}</span></td>
+                            <td><span ><h4 style="margin-left: 50px;">{{ cart.size }}</h4></span></td>
                         </tr>
                         <tr>
                             <td class="alignTable" >Quantity</td>
-                            <td><span editable-text="data[0].quantity">{{ data[0].quantity }}</span></td>
+                            <td><span ><h4 style="margin-left: 50px;">{{ cart.quantity }}</h4></span></td>
                         </tr>
                         <tr>
                             <td class="alignTable" >Cost</td>
-                            <td><span editable-text="data[0].cost">{{ data[0].cost }}</span></td>
+                            <td><span><h4 style="margin-left: 50px;">{{ cart.product.cost * cart.quantity }}</h4></span></td>
                         </tr>
                         </tbody>
                     </table>
-                    <input class="button-cart" type="button" value="MUA NGAY" />
                 </ul>
             </div>
         </div>
